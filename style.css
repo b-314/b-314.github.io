@@ -1,6 +1,78 @@
- h1 {
-  padding: 80px; /* some padding */
-  text-align: center; /* center the text */
-  background: #d4a0d1; /* green background */
-  color: white; /* white text color */
+body {
+  padding: 16px;
+  background-color: white;
+  color: black;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
 }
+
+h1 {
+  padding: 16px;
+  text-align: center;
+  background: #e0b0de;
+  color: white;
+  font-family: Oswald, sans-serif;
+  font-size: 48px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+div.content {
+  margin-left: 250px;
+  padding: 0px 16px;
+  height: 1000px;
+}
+
+/* Sidebar navigation menu */
+.sidebar {
+  margin: 0px;
+  padding: 0px;
+  width: 250px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Current link */
+.sidebar a.active {
+  background-color: #78ddf1;
+  color: white;
+}
+
+/* Mouse hover over link */
+.sidebar a:hover {
+  background-color: #555;
+  color: white;
+}
+
+/* Turn sidebard into topbar for screens less than 700px wide */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto; 
+    position: sticky;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* Turn topbar into sidebar for screens less than 400px wide */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+

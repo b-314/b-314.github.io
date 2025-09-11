@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Page Title</title>
+    <title>Bela's website</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-        font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Inter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <h1>My Website</h1>
+    <script>
+    function toggleDarkMode() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+    }
+    </script>
+
+    <div class="sidebar">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+    </div>
+
+    <div class="content">
+        <h1>My Website</h1>
+        <p>Thanks for stopping by my Github page!</p>
+        <button onclick="toggleDarkMode()">Toggle dark mode</button>
+    </div>
 </body>
+
 </html> 
