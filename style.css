@@ -1,78 +1,115 @@
 body {
-  padding: 16px;
-  background-color: white;
-  color: black;
-  font-family: Inter, sans-serif;
+  margin: 0;
+  background-color: #F1F0E8;
+  color: #222831;
+  font-family: "PT Sans Narrow", sans-serif;
   font-size: 16px;
 }
 
-h1 {
-  padding: 16px;
-  text-align: center;
-  background: #e0b0de;
-  color: white;
-  font-family: Oswald, sans-serif;
+html {
+  scroll-behavior: smooth;
+}
+
+.header h1{
+  margin: 0;
+  padding: 20px;
+  text-align: left;
   font-size: 48px;
+  font-family: Montserrat, sans-serif;
+  color:#222831;
 }
 
 .dark-mode {
-  background-color: black;
-  color: white;
+  background-color: #393E46;
+  color: #F8F6F4;
+}
+
+.dark-mode .navbar{
+  background-color: #222831;
+}
+
+.dark-mode .navbar a{
+  color: #F8F6F4;
+}
+
+.dark-mode .navbar a:hover{
+  background-color: #434851;
+  color: #F8F6F4;
+}
+
+.dark-mode .header h1{
+  color: #F8F6F4;
+}
+
+.dark-mode .navbar .name {
+  color: #F8F6F4;
 }
 
 div.content {
-  margin-left: 250px;
-  padding: 0px 16px;
+  padding: 20px 20px;
   height: 1000px;
 }
 
 /* Sidebar navigation menu */
-.sidebar {
-  margin: 0px;
-  padding: 0px;
-  width: 250px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right content apart */
+  align-items: center;
+  padding:10px 20px;
+  background-color: #B3C8CF;
+  overflow: hidden;
+}
+
+.navbar .name {
+  font-size: 25px;
+  font-weight: bold;
+  color: #222831;
+  font-family: "PT Sans Narrow", sans-serif;
 }
 
 /* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
+.navbar a {
+  margin-left: 20px;
+  color: #222831;
   text-decoration: none;
-}
+  font-size: 25px;
+  transition: color 0.3s, background 0.3s;}
 
 /* Current link */
-.sidebar a.active {
-  background-color: #78ddf1;
-  color: white;
+.navbar a.active {
+  background-color: #89A8B2;
+  color: #F1F0E8;
+  position: sticky;
 }
 
 /* Mouse hover over link */
-.sidebar a:hover {
-  background-color: #555;
-  color: white;
+.navbar a:hover {
+  background-color: #9ab3bc;
+  color: #393E46;
+  padding: 8px 12px;
+  border-radius: 6px;'
 }
 
-/* Turn sidebard into topbar for screens less than 700px wide */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto; 
-    position: sticky;
+/*
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon{
+    float: right;
+    display: block;
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
 }
 
-/* Turn topbar into sidebar for screens less than 400px wide */
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
+@media screen and (max-width: 600px) {
+  .navbar.responsive {position: relative;}
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
     float: none;
+    display: block;
+    text-align: left;
   }
 }
-
+*/
