@@ -1,9 +1,31 @@
+:root {
+  --bg-color: #E3F4F4;
+  --text-color: #222831;
+  --navbar-bg: #C4DFDF;
+  --navbar-link-color: #222831;
+  --navbar-hover-bg: #D2E9E9;
+  --navbar-active-bg: #D1E3E3;
+}
+
+.dark-mode {
+  --bg-color: #393E46;
+  --text-color: #F8F6F4;
+  --navbar-bg: #222831;
+  --navbar-link-color: #F8F6F4;
+  --navbar-hover-bg: #434851;
+}
+
 body {
   margin: 0;
-  background-color: #F1F0E8;
-  color: #222831;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 16px;
+}
+
+div.content {
+  padding: 20px 20px;
+  height: 1000px;
 }
 
 html {
@@ -16,78 +38,47 @@ html {
   text-align: left;
   font-size: 48px;
   font-family: Montserrat, sans-serif;
-  color:#222831;
+  color: var(--text-color);
 }
 
-.dark-mode {
-  background-color: #393E46;
-  color: #F8F6F4;
-}
-
-.dark-mode .navbar{
-  background-color: #222831;
-}
-
-.dark-mode .navbar a{
-  color: #F8F6F4;
-}
-
-.dark-mode .navbar a:hover{
-  background-color: #434851;
-  color: #F8F6F4;
-}
-
-.dark-mode .header h1{
-  color: #F8F6F4;
-}
-
-.dark-mode .navbar .name {
-  color: #F8F6F4;
-}
-
-div.content {
-  padding: 20px 20px;
-  height: 1000px;
-}
-
-/* Sidebar navigation menu */
+/* Navigation menu */
 .navbar {
   display: flex;
   justify-content: space-between; /* pushes left + right content apart */
   align-items: center;
-  padding:10px 20px;
-  background-color: #B3C8CF;
+  padding: 10px 20px;
+  position: sticky;
+  background-color: var(--navbar-bg);
   overflow: hidden;
 }
 
 .navbar .name {
   font-size: 25px;
   font-weight: bold;
-  color: #222831;
+  color: var(--navbar-link-color);
   font-family: "PT Sans Narrow", sans-serif;
 }
 
 /* Sidebar links */
 .navbar a {
   margin-left: 20px;
-  color: #222831;
+  color: var(--navbar-link-color);
   text-decoration: none;
   font-size: 25px;
-  transition: color 0.3s, background 0.3s;}
+  transition: color 0.3s, background 0.3s;
+}
 
 /* Current link */
 .navbar a.active {
-  background-color: #89A8B2;
-  color: #F1F0E8;
-  position: sticky;
+  background-color: var(--navbar-active-bg);
 }
 
 /* Mouse hover over link */
 .navbar a:hover {
-  background-color: #9ab3bc;
-  color: #393E46;
+  background-color: var(--navbar-hover-bg);
+  color: var(--text-color);
   padding: 8px 12px;
-  border-radius: 6px;'
+  border-radius: 6px;
 }
 
 /*

@@ -15,49 +15,49 @@
             document.body.classList.toggle("dark-mode");
 
             if (document.body.classList.contains("dark-mode")) {
-                localStorage.setItem(theme, "dark");
+                localStorage.setItem("theme", "dark");
             } else {
-                localStorage.setItem(theme, "light");
+                localStorage.setItem("theme", "light");
             }
 
             window.onload = function() {
-                if (localStorage.getItem(theme) == "dark") {
+                if (localStorage.getItem("theme") == "dark") {
                     document.body.classList.add("dark-mode");
                 }
-            };
-        }
+            }
+        };
     </script>
 
-    <div id="navbar" class="navbar">
-        <div class="nav-left">
-            <span class="name">Bela</span>
-        </div>
-        <div class="nav-right">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
-            <a href="#">Fun</a>
-        </div>
-    </div>
+    <header>
+        <nav id="navbar" class="navbar" aria-label="Main navigation">
+            <div class="nav-left">
+                <span class="name">Bela</span>
+            </div>
+            <div class="nav-right">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="#fun">Fun</a>
+                <button onclick="toggleDarkMode()">🌕</button>
+            </div>
+        </nav>
+    </header>
 
-    <div id="about" class="header"> 
+    <section id="about" class="header">
         <h1>About</h1>
-    </div>
+        <div class="content">
+            <p>Hi, I'm Bela</p>
+        </div>
+    </section>
 
-    <div class="content">
-        <p>Hi, I'm Bela</p>
-        <button onclick="toggleDarkMode()">Toggle dark mode</button>
-    </div>
-
-    <div id="skills" class="header">
+    <section id="skills" class="header">
         <h1>Skills</h1>
-    </div>
+    </section>
 
-    <div id="projects" class="header">
+    <section id="projects" class="header">
         <h1>Projects</h1>
-    </div>
-
+    </section>
 </body>
 
 </html> 
