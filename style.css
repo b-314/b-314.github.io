@@ -1,10 +1,10 @@
 :root {
-  --bg-color: #E3F4F4;
+  --bg-color: #F3EEEA;
   --text-color: #222831;
-  --navbar-bg: #C4DFDF;
+  --header-color: #F8F6F4;
+  --navbar-bg: #B0A695;
   --navbar-link-color: #222831;
-  --navbar-hover-bg: #D2E9E9;
-  --navbar-active-bg: #D1E3E3;
+  --navbar-hover-bg: #776B5D;
 }
 
 .dark-mode {
@@ -15,39 +15,73 @@
   --navbar-hover-bg: #434851;
 }
 
-body {
-  margin: 0;
-  background-color: var(--bg-color);
+.dark-mode .header h1 {
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.9), 
+                0 0 15px rgba(255, 0, 255, 0.7); 
+}
+
+#darkModeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 20px;
+  color: var(--navbar-link-color);
+  transition: color 0.3s;
+}
+
+#darkModeToggle:hover {
   color: var(--text-color);
-  font-family: "PT Sans Narrow", sans-serif;
-  font-size: 16px;
 }
 
 div.content {
   padding: 20px 20px;
-  height: 1000px;
+  height: 600px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-.header h1{
+body {
+  padding-top: 60px; 
   margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+}
+
+.header h1{
+  margin: 20px;
   padding: 20px;
   text-align: left;
-  font-size: 48px;
-  font-family: Montserrat, sans-serif;
-  color: var(--text-color);
+  font-size: 64px;
+  font-family: "Nunito", sans-serif;
+  color: var(--header-color);
+
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.7), 
+                0 0 10px rgba(255, 0, 255, 0.5), 
+                0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+p {
+  margin: 20px;
+  font-size: 32px;
 }
 
 /* Navigation menu */
 .navbar {
   display: flex;
-  justify-content: space-between; /* pushes left + right content apart */
+  justify-content: space-between; 
   align-items: center;
   padding: 10px 20px;
-  position: sticky;
+  position: fixed; 
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 1000;
   background-color: var(--navbar-bg);
   overflow: hidden;
 }
@@ -66,11 +100,6 @@ html {
   text-decoration: none;
   font-size: 25px;
   transition: color 0.3s, background 0.3s;
-}
-
-/* Current link */
-.navbar a.active {
-  background-color: var(--navbar-active-bg);
 }
 
 /* Mouse hover over link */
