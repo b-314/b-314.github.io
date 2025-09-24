@@ -1,7 +1,7 @@
 :root {
   --bg-color: #F3EEEA;
   --text-color: #222831;
-  --header-color: #F8F6F4;
+  --header-color: #381d2e;
   --navbar-bg: #B0A695;
   --navbar-link-color: #222831;
   --navbar-hover-bg: #776B5D;
@@ -53,20 +53,20 @@ body {
 }
 
 .header h1{
-  margin: 20px;
+  margin: 0px 0px 0px 20px;
   padding: 20px;
   text-align: left;
   font-size: 64px;
   font-family: "Nunito", sans-serif;
-  color: var(--header-color);
+  color: var(--text-color);
 
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.7), 
-                0 0 10px rgba(255, 0, 255, 0.5), 
-                0 0 15px rgba(255, 0, 255, 0.3);
+  text-shadow: 0 0 5px rgba(60, 20, 60, 0.7), 
+                0 0 10px rgba(60, 20, 60, 0.5), 
+                0 0 15px rgba(60, 20, 60, 0.3);
 }
 
 p {
-  margin: 20px;
+  margin: 0px 0px 0px 20px;
   font-size: 32px;
 }
 
@@ -110,6 +110,44 @@ p {
   border-radius: 6px;
 }
 
+.skills-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.skill i {
+  font-size: 48px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill p {
+  font-size: 32px;
+  margin: 0;
+}
+
+.skill:hover {
+  transform: scale(1.2);
+}
+
+.skill:hover i {
+  filter: drop-shadow(0 0 10px #00BCD4);
+}
 /*
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {display: none;}
