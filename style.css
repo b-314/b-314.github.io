@@ -1,3 +1,4 @@
+/* Light mode colors */
 :root {
   --bg-color: #F3EEEA;
   --text-color: #222831;
@@ -7,6 +8,7 @@
   --navbar-hover-bg: #e3e0dc;
 }
 
+/* Dark mode colors */
 .dark-mode {
   --bg-color: #393E46;
   --text-color: #F8F6F4;
@@ -15,17 +17,18 @@
   --navbar-hover-bg: #434851;
 }
 
-.dark-mode .header h1 {
+.dark-mode h1 {
   text-shadow: 0 0 5px rgba(255, 0, 255, 0.9), 
                 0 0 15px rgba(255, 0, 255, 0.7); 
 }
 
+/* Dark mode toggle button */
 #darkModeToggle {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  margin-left: 20px;
+  font-size: 20px;
+  margin: 0px 16px;
   color: var(--navbar-link-color);
   transition: color 0.3s;
 }
@@ -46,23 +49,24 @@ html {
 }
 
 section {
-  height: 100vh;
+  height: 800px;
   scroll-snap-align: start;
+  padding-top: 10px;
 }
 
 body {
-  padding-top: 6vh; 
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: "Hind", sans-serif;
-  font-size: 2vh;
+  font-size: 20px;
 }
 
-.header h1{
-  padding: 10vh 2vh;
+h1{
+  padding: 10px 30px;
+  margin-bottom: 10px;
   text-align: left;
-  font-size: 8vh;
+  font-size: 60px;
   font-family: "Nunito", sans-serif;
   color: var(--text-color);
 
@@ -72,13 +76,13 @@ body {
 }
 
 div.content {
-  padding: 2vh 2vh;
-  height: 90vh;
+  padding: 20px 20px;
+  height: 500px;
 }
 
 p {
-  margin: 0vh 0vh 0vh 2vh;
-  font-size: 4vh;
+  margin: 0px 10px;
+  font-size: 40px;
 }
 
 /* Navigation menu */
@@ -86,7 +90,7 @@ p {
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  padding: 1vh 2vh;
+  padding: 5px 10px;
   position: fixed; 
   width: 100%;
   top: 0;
@@ -97,13 +101,12 @@ p {
   overflow: hidden;
 }
 
-/* Sidebar links */
+/* Navigation links */
 .navbar a {
-  margin-left: 1vh;
   color: var(--navbar-link-color);
   text-decoration: none;
-  font-size: 3vh;
-  padding: 1vh 0.5vh;
+  font-size: 20px;
+  padding: 8px 8px;
   transition: color 0.3s, background 0.3s;
 }
 
@@ -111,11 +114,10 @@ p {
 .navbar a:hover {
   background-color: var(--navbar-hover-bg);
   color: var(--text-color);
-  border-radius: 8px;
 }
 
 .skills-section {
-  padding: 40px 20px;
+  margin: 0px 20px;
   text-align: center;
 }
 
@@ -123,7 +125,8 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 20px;
-  padding: 48px 0px;
+  padding-bottom: 80px;
+  padding-top: 16px;
 }
 
 .skill {
