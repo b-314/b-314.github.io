@@ -4,7 +4,7 @@
     <title>Bela - Computer Science Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Nunito|PT+Sans+Narrow|PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Oxygen+Mono|Hind" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -25,7 +25,6 @@
 
             button.addEventListener("click", () => {
                 document.body.classList.toggle("dark-mode");
-
                 if (document.body.classList.contains("dark-mode")) {
                     localStorage.setItem("theme", "dark");
                     icon.classList.remove("fa-moon-o");
@@ -37,12 +36,13 @@
                 }
             });
         });
+
     </script>
 
     <header>
         <nav id="navbar" class="navbar" aria-label="Main navigation">
             <div class="nav-left">
-                <span class="name">Bela</span>
+                <a href="b-314.github.io">Bela</a>
             </div>
             <div class="nav-right">
                 <a href="#about">About</a>
@@ -60,7 +60,7 @@
     <section id="landing" class="header">
         <h1>Bela</h1>
         <div class="content">
-            <p>Computer Science enthusiast.</p>
+            <p>Compiling</p>
         </div>
     </section>
 
@@ -77,24 +77,38 @@
         </div>
         <div class="skills-grid">
             <div class="skill">
-                <i class="devicon-python-plain colored"></i>
+                <i class="devicon-python-plain"></i>
                 <p>Python</p>
             </div>
             <div class="skill">
-                <i class="devicon-java-plain colored"></i>
+                <i class="devicon-java-plain"></i>
                 <p>Java</p>
             </div>
+            <div class="skill">
+                 <i class="devicon-r-plain"></i>
+                <p>R</p>
+            </div>
+            <div class="skill">
+                <i class="devicon-git-plain"></i>
+                <p>Git</p>
+            </div>
+        </div>
+        <div class="skills-grid">
             <div class="skill">
                 <i class="devicon-html5-plain"></i>
                 <p>HTML</p>
             </div>
             <div class="skill">
-                <i class="devicon-css3-plain colored"></i>
+                <i class="devicon-css3-plain"></i>
                 <p>CSS</p>
             </div>
             <div class="skill">
-                <i class="devicon-javascript-plain colored"></i>
+                <i class="devicon-javascript-plain"></i>
                 <p>JavaScript</p>
+            </div>
+            <div class="skill">
+                <i class="devicon-canva-original"></i>
+                <p>Canva</p>
             </div>
         </div>
     </section>
