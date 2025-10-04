@@ -109,12 +109,41 @@
         </div>
     </section>
 
-    <section id="projects" class="projects-section">
+    <section id="projects" class="slideshow">
         <h1>Projects</h1>
-        <div class="content">
-            <p>Projects from Github</p>
+        <div class="slide fade">
+            <img scr="images/project1.png" alt="Project 1">
+            <div class="caption">
+                <h2>Flight Delays</h2>
+                <p>Predicts the delay on arrival based on factors of the flight</p>
+            </div>
         </div>
+        <div class="slide fade">
+            <img scr="images/project2.png" alt="Project 2">
+            <div class="caption">
+                <h2>Carpool Scheduler</h2>
+                <p>Generates a carpool's schedule for the school year</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img scr="images/project2.png" alt="Project 3">
+            <div class="caption">
+                <h2>Expression Tree</h2>
+                <p>Converts an infix to prefix expression using a tree</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img scr="images/project2.png" alt="Project 4">
+            <div class="caption">
+                <h2>Binary Tree</h2>
+                <p>Creates a binary sorting tree for a word</p>
+            </div>
+        </div>
+        <a class="prev" onclick="changeSlide(-1)" aria-label="Previous slide">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)" aria-label="Next slide">&#10095;</a>
     </section>
+    
+    <script src="slideshow.js"></script>
 </body>
 
 </html> 
