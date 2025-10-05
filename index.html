@@ -39,7 +39,7 @@
     </script>
 
     <header>
-        <nav id="navbar" class="navbar" aria-label="Main navigation">
+        <nav id="navbar" class="navbar">
             <div class="nav-left">
                 <a href="b-314.github.io">Bela</a>
             </div>
@@ -109,38 +109,50 @@
         </div>
     </section>
 
-    <section id="projects" class="slideshow">
+    <section id="projects">
         <h1>Projects</h1>
-        <div class="slide fade">
-            <img scr="images/project1.png" alt="Project 1">
-            <div class="caption">
-                <h2>Flight Delays</h2>
-                <p>Predicts the delay on arrival based on factors of the flight</p>
+        <div class="slideshow">
+            <div class="slide fade">
+                <img scr="images/project1.png" alt="Project 1">
+                <div class="description">
+                    <h2>Flight Delays</h2>
+                    <p>Predicts the delay on arrival based on factors of the flight</p>
+                    <p>May 12th, 2025</p>
+                </div>
             </div>
-        </div>
-        <div class="slide fade">
-            <img scr="images/project2.png" alt="Project 2">
-            <div class="caption">
-                <h2>Carpool Scheduler</h2>
-                <p>Generates a carpool's schedule for the school year</p>
+            <div class="slide fade">
+                <img scr="images/project2.png" alt="Project 2">
+                <div class="description">
+                    <h2>Carpool Scheduler</h2>
+                    <p>Generates a carpool's schedule for the school year</p>
+                    <p>January 22nd, 2024</p>
+                </div>
             </div>
-        </div>
-        <div class="slide fade">
-            <img scr="images/project2.png" alt="Project 3">
-            <div class="caption">
-                <h2>Expression Tree</h2>
-                <p>Converts an infix to prefix expression using a tree</p>
+            <div class="slide fade">
+                <img scr="images/project2.png" alt="Project 3">
+                <div class="description">
+                    <h2>Bohemian Schneider</h2>
+                    <p>Object-oriented implementation of the card game Bohemian Schneider</p>
+                    <p>October 31st, 2024</p>
+                </div>
             </div>
-        </div>
-        <div class="slide fade">
-            <img scr="images/project2.png" alt="Project 4">
-            <div class="caption">
-                <h2>Binary Tree</h2>
-                <p>Creates a binary sorting tree for a word</p>
+            <div class="slide fade">
+                <img scr="images/project2.png" alt="Project 4">
+                <div class="description">
+                    <h2>Expression Tree</h2>
+                    <p>Converts an infix to prefix expression using a tree</p>
+                </div>
             </div>
+            <div class="slide fade">
+                <img scr="images/project2.png" alt="Project 5">
+                <div class="description">
+                    <h2>Binary Tree</h2>
+                    <p>Creates a binary sorting tree for a word</p>
+                </div>
+            </div>
+            <a class="prev" onclick="changeSlide(-1)" aria-label="Previous slide">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)" aria-label="Next slide">&#10095;</a>
         </div>
-        <a class="prev" onclick="changeSlide(-1)" aria-label="Previous slide">&#10094;</a>
-        <a class="next" onclick="changeSlide(1)" aria-label="Next slide">&#10095;</a>
     </section>
     
     <script src="slideshow.js"></script>

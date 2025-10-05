@@ -1,44 +1,25 @@
 /* Light mode colors */
 :root {
-  --bg-color: #F3EEEA;
+  --bg-color: #f2f1f0;
   --text-color: #222831;
   --header-color: #cddbf1;
-  --navbar-bg: #d6d4d2;
+  --navbar-bg: #eeeeee;
   --navbar-link-color: #222831;
-  --navbar-hover-bg: #e3e0dc;
+  --navbar-hover-bg: #f0efee;
 }
 
 /* Dark mode colors */
 .dark-mode {
-  --bg-color: #393E46;
+  --bg-color: #3d4450;
   --text-color: #F8F6F4;
-  --navbar-bg: #222831;
+  --navbar-bg: #333b47;
   --navbar-link-color: #F8F6F4;
-  --navbar-hover-bg: #434851;
+  --navbar-hover-bg: #434c5b;
 }
 
 .dark-mode h1 {
   text-shadow: 0 0 5px rgba(255, 0, 255, 0.9), 
                 0 0 15px rgba(255, 0, 255, 0.7); 
-}
-
-/* Dark mode toggle button */
-#darkModeToggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 8px 0px;
-  margin-left: 32px;
-  margin-right: 8px;
-  color: var(--navbar-link-color);
-  transition: color 0.3s;
-  display: flex;
-  align-items: center;
-}
-
-#darkModeToggle:hover {
-  color: var(--text-color);
 }
 
 html, body {
@@ -49,27 +30,26 @@ html, body {
   overflow-y: scroll;
 }
 
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Hind", sans-serif;
+  text-align: left;
+}
+
 section {
   height: 100vh;
   scroll-snap-align: start;
   padding-top: 10px;
 }
 
-body {
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: "Hind", sans-serif;
-  font-size: 20px;
-}
-
 h1{
   padding: 20px 30px;
   margin-bottom: 10px;
-  text-align: left;
-  font-size: 60px;
+  font-size: 10vmin;
   font-family: "Nunito", sans-serif;
   color: var(--text-color);
+  text-align: left;
 
   text-shadow: 0 0 5px rgba(0, 80, 255, 0.7), 
                 0 0 10px rgba(0, 80, 255, 0.5), 
@@ -78,12 +58,12 @@ h1{
 
 div.content {
   padding: 20px 20px;
-  height: 500px;
+  height: 50vh;
 }
 
 p {
   margin: 0px 10px;
-  font-size: 40px;
+  font-size: 6vmin;
 }
 
 /* Navigation menu */
@@ -112,7 +92,7 @@ p {
   display: flex;
   color: var(--navbar-link-color);
   text-decoration: none;
-  font-size: 24px;
+  font-size: 3vh;
   padding: 8px 12px;
   transition: color 0.3s, background 0.3s;
 }
@@ -123,34 +103,45 @@ p {
   color: var(--text-color);
 }
 
-.landing-section {
-  margin: 0px 20px;
-  text-align: center;
+/* Dark mode toggle button */
+#darkModeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 3vh;
+  padding: 8px 0px;
+  margin-left: 32px;
+  margin-right: 8px;
+  color: var(--navbar-link-color);
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+#darkModeToggle:hover {
+  color: var(--text-color);
 }
 
 .landing-header {
   font-size: 15vw;
   text-align: center;
-  align-items: center;
   margin-bottom: 0px;
 }
 
 .landing-subheader {
-  font-size: 40px;
+  font-size: 6vh;
   text-align: center;
-  align-items: center;
-  font-family: "Nunito", sans-serif;
 }
 
 .skills-section {
-  margin: 0px 20px;
   text-align: center;
+  height: 100vh;
 }
 
 .skills-grid {
+  margin: 0px 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 20px;
   padding-bottom: 6vh;
   padding-top: 8vh;
 }
@@ -164,13 +155,13 @@ p {
 }
 
 .skill i {
-  font-size: 80px;
+  font-size: 5vw;
   margin-bottom: 10px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .skill p {
-  font-size: 32px;
+  font-size: 3vw;
   margin: 0;
 }
 
@@ -182,15 +173,12 @@ p {
   filter: drop-shadow(0 0 10px #00BCD4);
 }
 
-.projects-section {
-  margin: 0px 20px;
-}
-
 .slideshow {
   position: relative;
-  max-width: 800px;
+  max-width: 80vw;
   margin: auto;
-  overflow: hidden
+  overflow: hidden;
+  align-items: center;
 }
 
 .slide {
@@ -200,14 +188,16 @@ p {
 
 .slide img {
   width: 100%;
-  max-height: 400px;
+  max-height: 40vh;
   object-fit: cover;
 }
 
 .description {
   margin-top: 10px;
-  font-size: 24px;
+  text-align: center;
+  font-size: 5vmin;
   color: var(--text-color);
+  max-width: 60vw;
 }
 
 .prev, .next {
@@ -219,7 +209,7 @@ p {
   padding: 16px;
   color: var(--text-color);
   font-weight: bold;
-  font-size: 24px;
+  font-size: 6vmin;
   border-radius: 0 3px 3px 0;
   user-select: none;
   background-color: rgba(0, 0, 0, 0.1);
