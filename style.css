@@ -171,7 +171,7 @@ p {
 }
 
 .skills-grid {
-  margin: 0px 20px;
+  margin: 0px 2vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   padding: 5vh 0;
@@ -188,7 +188,7 @@ p {
 
 .skill i {
   font-size: 5vw;
-  margin: 15px 0px;
+  margin: 2vh 0px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
