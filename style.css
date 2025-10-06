@@ -3,16 +3,16 @@
   --bg-color: #f2f1f0;
   --text-color: #222831;
   --header-color: #cddbf1;
-  --navbar-bg: #eeeeee;
+  --navbar-bg: #e0e0e0;
   --navbar-link-color: #222831;
   --navbar-hover-bg: #f0efee;
 }
 
 /* Dark mode colors */
 .dark-mode {
-  --bg-color: #3d4450;
+  --bg-color: #444952;
   --text-color: #F8F6F4;
-  --navbar-bg: #333b47;
+  --navbar-bg: #3d4148;
   --navbar-link-color: #F8F6F4;
   --navbar-hover-bg: #434c5b;
 }
@@ -142,8 +142,7 @@ p {
   margin: 0px 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  padding-bottom: 6vh;
-  padding-top: 8vh;
+  padding: 5vh 0;
 }
 
 .skill {
@@ -156,7 +155,7 @@ p {
 
 .skill i {
   font-size: 5vw;
-  margin-bottom: 10px;
+  margin: 15px 0px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -167,6 +166,7 @@ p {
 
 .skill:hover {
   transform: scale(1.2);
+  background-color: var(--navbar-bg);
 }
 
 .skill:hover i {
@@ -176,50 +176,80 @@ p {
 .slideshow {
   position: relative;
   max-width: 80vw;
-  margin: auto;
+  margin: 8vh auto;
   overflow: hidden;
+
   align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .slide {
-  display: none;
+  flex: 0 0 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.slide img {
+.slide a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   width: 100%;
-  max-height: 40vh;
-  object-fit: cover;
 }
 
 .description {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 5vmin;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--navbar-bg);
   color: var(--text-color);
-  max-width: 60vw;
+  padding: 2vmax;
+  width: 50vw;
+  height: 30vh;
+  display: flex;
+  border-radius: 12px;
+}
+
+.description:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.description h2 {
+  margin: 0;
+  font-size: 6vmin;
+}
+
+.description p {
+  margin: 0;
+  font-size: 4vmin;
+}
+
+.description .date {
+  margin: 0;
+  font-size: 4vmin;
 }
 
 .prev, .next {
-  cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
   transform: translateY(-50%);
-  padding: 16px;
-  color: var(--text-color);
-  font-weight: bold;
+  cursor: pointer;
   font-size: 6vmin;
-  border-radius: 0 3px 3px 0;
+  color: var(--text-color);
   user-select: none;
-  background-color: rgba(0, 0, 0, 0.1);
+  padding: 16px;
 }
 
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+.prev {left: 0;}
+.next {right: 0;}
 
 .prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
