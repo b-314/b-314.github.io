@@ -7,7 +7,7 @@ function changeSlide(n) {
 
 function displaySlide(n) {
     let slides = document.getElementsByClassName("slide");
-    if (n > slides.length) { slideIndex = 0; }
+    if (n >= slides.length) { slideIndex = 0; }
     if (n < 0) { slideIndex = slides.length - 1; }
 
     for (let i = 0; i < slides.length; i++) {
