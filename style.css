@@ -177,7 +177,6 @@ p {
   position: relative;
   max-width: 80vw;
   margin: 8vh auto;
-  overflow: hidden;
 
   align-items: center;
   display: flex;
@@ -193,27 +192,26 @@ p {
   width: 100%;
 }
 
-.slide a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  width: 100%;
-}
-
 .description {
   flex-direction: column;
   justify-content: space-between;
   display: flex;
   align-items: center;
+  width: 100%;
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: var(--navbar-bg);
   color: var(--text-color);
   padding: 2vmax;
+
   width: 50vw;
   height: 30vh;
   display: flex;
+
   border-radius: 12px;
+  text-decoration: none;
+
+  display: inline-flex;
 }
 
 .description:hover {
