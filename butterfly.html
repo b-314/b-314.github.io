@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Butterfly Animation</title>
+  <style>
+    /* Continuous canvas styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #eef6ff 0%, #f6f7ff 100%);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      perspective: 1000px;
+    }
+
+    /* Outer wrapper managing flight position and scale */
+    .butterfly-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      transform-style: preserve-3d;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Internal system managing 3D tilt and pitch */
+    .butterfly {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    /* Core anatomy coordinates */
+    .body-center {
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      width: 4px;
+      height: 20px;
+      background: #333;
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    /* Shared structural logic for wings */
+    .wing {
+      position: absolute;
+      top: 0;
+      width: 25px;
+      height: 35px;
+      background: linear-gradient(135deg, #ff007f, #7f00ff);
+      border-radius: 50% 50% 40% 40%;
+      opacity: 0.85;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.6);
+    }
+
+    /* Pivot and flap physics for left wing */
+    .wing-left {
+      left: -7px;
+      transform-origin: right center;
+      animation: flap-left 0.15s infinite ease-in-out alternate;
+    }
+
+    /* Pivot and flap physics for right wing */
+    .wing-right {
+      left: 22px;
+      transform-origin: left center;
+      animation: flap-right 0.15s infinite ease-in-out alternate;
+    }
+
+    /* 3D flap mechanics */
+    @keyframes flap-left {
+      0% { transform: rotateY(-70deg); }
+      100% { transform: rotateY(20deg); }
+    }
+
+    @keyframes flap-right {
+      0% { transform: rotateY(70deg); }
+      100% { transform: rotateY(-20deg); }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  class Butterfly {
+    constructor() {
+      this.domElement = this.createDOM();
+      
+      // Randomize initial spatial parameters
+      this.x = Math.random() * window.innerWidth;
+      this.y = Math.random() * window.innerHeight;
+      this.speedX = (Math.random() - 0.5) * 4;
+      this.speedY = (Math.random() - 0.5) * 4;
+      
+      // Flight noise metrics
+      this.angle = Math.random() * Math.PI * 2;
+      this.scale = 0.5 + Math.random() * 0.8;
+      
+      document.body.appendChild(this.domElement);
+    }
+
+    createDOM() {
+      const container = document.createElement('div');
+      container.className = 'butterfly-container';
+      
+      const butterfly = document.createElement('div');
+      butterfly.className = 'butterfly';
+      
+      const bodyCenter = document.createElement('div');
+      bodyCenter.className = 'body-center';
+      
+      const wingLeft = document.createElement('div');
+      wingLeft.className = 'wing wing-left';
+      
+      const wingRight = document.createElement('div');
+      wingRight.className = 'wing wing-right';
+      
+      butterfly.appendChild(bodyCenter);
+      butterfly.appendChild(wingLeft);
+      butterfly.appendChild(wingRight);
+      container.appendChild(butterfly);
+      
+      return container;
+    }
+
+    update() {
+      // Periodic direction changes mimic live behaviors
+      this.angle += (Math.random() - 0.5) * 0.4;
+      
+      // Accelerations maps to modern trigonometry
+      this.speedX += Math.cos(this.angle) * 0.15;
+      this.speedY += Math.sin(this.angle) * 0.15;
+      
+      // Clamp maximum speeds
+      const maxSpeed = 3.5;
+      this.speedX = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedX));
+      this.speedY = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedY));
+      
+      // Apply delta transformations
+      this.x += this.speedX;
+      this.y += this.speedY;
+      
+      // Edge management bounds wrap positions
+      if (this.x < -50) this.x = window.innerWidth;
+      if (this.x > window.innerWidth + 50) this.x = -50;
+      if (this.y < -50) this.y = window.innerHeight;
+      if (this.y > window.innerHeight + 50) this.y = -50;
+      
+      // Calculate rotation to match heading direction
+      const rotationRad = Math.atan2(this.speedY, this.speedX);
+      const rotationDeg = (rotationRad * 180 / Math.PI) - 90; 
+      
+      // Paint updates efficiently using hardware rendering pipelines
+      this.domElement.style.transform = `translate3d(${this.x}px, ${this.y}px, 0) scale(${this.scale})`;
+      this.domElement.firstElementChild.style.transform = `rotateZ(${rotationDeg}deg)`;
+    }
+  }
+
+  // Instantiate swarm entity collection
+  const butterflySwarm = [];
+  const totalButterflies = 15;
+
+  for (let i = 0; i < totalButterflies; i++) {
+    butterflySwarm.push(new Butterfly());
+  }
+
+  // Maintain precise frame timing via standard web rendering loop
+  function animationLoop() {
+    butterflySwarm.forEach(butterfly => butterfly.update());
+    requestAnimationFrame(animationLoop);
+  }
+
+  // Kick off frame lifecycle
+  requestAnimationFrame(animationLoop);
+</script>
+</body>
+</html>
