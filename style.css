@@ -1,13 +1,29 @@
-*{
+*
+{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    /* Backgrounds */
+    --bg-color: #ffffff;
+    --nav-bg: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.35);
+
+    /* Text */
+    --text-color: #000000;
+    --secondary-text: #999999;
+
+    /* UI */
+    --icon-color: #000000;
+    --hover-opacity: 0.55;
+}
+
 body{
     font-family:'Ovo', serif;
-    background:white;
-    color:black;
+    background:var(--bg-color);
+    color:var(--text-color);
     overflow-x:hidden;
 }
 
@@ -39,7 +55,7 @@ header{
     height:2px;
     width:100%;
 
-    background:black;
+    background:var(--icon-color);
 
     transition:.35s;
 }
@@ -63,7 +79,7 @@ header{
     position:fixed;
     inset:0;
 
-    background:rgba(0,0,0,.35);
+    background:var(--overlay-color);
 
     opacity:0;
     visibility:hidden;
@@ -89,7 +105,7 @@ header{
     width:270px;
     height:100vh;
 
-    background:white;
+    background:var(--nav-bg);
 
     padding:120px 50px;
 
@@ -113,7 +129,7 @@ header{
 
 .nav-menu a{
     text-decoration:none;
-    color:black;
+    color:var(--text-color);
 
     text-align:right; 
     font-size:1.4rem;
