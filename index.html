@@ -1,333 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bela — Computer Science Portfolio</title>
-<link rel="stylesheet" href="css/style.css" />
+    <title>Bela - Computer Science Portfolio</title>
+    <meta name="description" content="Projects in Software Development and Data Science.">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Ovo|Mulish" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://b-314.github.io/">
+    <meta property="og:title" content="Bela - Computer Science Portfolio">
+    <meta property="og:description" content="Projects in Software Development and Data Science.">
+    <meta property="og:image" content="https://b-314.github.io/images/preview.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://b-314.github.io/">
+    <meta property="twitter:title" content="Bela - Computer Science Portfolio">
+    <meta property="twitter:description" content="Projects in Software Development and Data Science.">
+    <meta property="twitter:image" content="https://b-314.github.io/images/preview.jpg">
 </head>
+
 <body>
+    <div class="overlay"></div>
 
-<!-- ==================== TOP CONTROLS: theme toggle + hamburger ==================== -->
-<div class="top-controls">
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
-  </button>
-  <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation menu">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-</div>
-
-<!-- Gray-out overlay shown behind the nav panel while it's open -->
-<div class="nav-overlay" id="nav-overlay"></div>
-
-<!-- ==================== NAV PANEL ==================== -->
-<nav class="nav-panel" id="nav-panel" aria-label="Primary">
-  <!-- Add/remove <li> items here to change the nav links -->
-  <ul class="nav-links">
-    <li><a href="#home" class="nav-link">Home</a></li>
-    <li><a href="#about" class="nav-link">About Me</a></li>
-    <li><a href="#experience" class="nav-link">Experience</a></li>
-    <li><a href="#software" class="nav-link">Software</a></li>
-    <li><a href="#art" class="nav-link">Art</a></li>
-  </ul>
-  <div class="nav-socials">
-    <!-- Replace href="#" with your real profile URLs -->
-    <a class="link-arrow" href="#" target="_blank" rel="noopener">
-      LinkedIn
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <a class="link-arrow" href="#" target="_blank" rel="noopener">
-      GitHub
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
-</nav>
-
-<!-- ==================== LANDING ==================== -->
-<header id="home" class="landing">
-
-  <!-- Top-right corner butterfly. Click spawns another placeholder
-       butterfly in the stage below (capped at 9).
-       TODO (future): replace this static drawing + the stage below with
-       real animated 3D butterflies. -->
-  <button class="landing-corner-butterfly" id="corner-butterfly" aria-label="Add a butterfly">
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M32 20c-4-10-18-14-22-8-3 5 2 14 12 16-10 2-15 11-12 16 4 6 18 2 22-8Z" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M32 20c4-10 18-14 22-8 3 5-2 14-12 16 10 2 15 11 12 16-4 6-18 2-22-8Z" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="32" y1="14" x2="32" y2="46" stroke-linecap="round"/>
-    </svg>
-  </button>
-
-  <!-- Populated by js/butterflies.js -->
-  <div class="butterfly-stage" id="butterfly-stage"></div>
-
-  <div class="landing-content">
-    <h1 class="landing-name">Hi, I'm Bela.</h1>
-    <p class="landing-tagline">
-      Computer Science Student.<br />
-      Aspiring software engineer.<br />
-      Artist and designer.
-    </p>
-    <div class="landing-current">
-      <span class="label">Currently</span>
-      <span class="value">Software Engineer Intern @ Veradigm</span>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <!-- ==================== ABOUT ME ==================== -->
-  <section id="about" class="section about">
-    <div class="container about-layout">
-
-      <!-- Photos: two columns, right column offset lower than left.
-           Add more <figure class="about-photo"> blocks to either column
-           to add more photos. -->
-      <div class="about-photos">
-        <div class="photo-col">
-          <figure class="about-photo reveal-fade">
-            <div class="placeholder-box">Photo placeholder 1</div>
-            <figcaption class="caption">Caption for photo 1 — swap in your own text</figcaption>
-          </figure>
-          <figure class="about-photo reveal-fade" data-delay="2">
-            <div class="placeholder-box">Photo placeholder 3</div>
-            <figcaption class="caption">Caption for photo 3</figcaption>
-          </figure>
-        </div>
-        <div class="photo-col photo-col--offset">
-          <figure class="about-photo reveal-fade" data-delay="1">
-            <div class="placeholder-box">Photo placeholder 2</div>
-            <figcaption class="caption">Caption for photo 2</figcaption>
-          </figure>
-          <figure class="about-photo reveal-fade" data-delay="3">
-            <div class="placeholder-box">Photo placeholder 4</div>
-            <figcaption class="caption">Caption for photo 4</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- Text: stays pinned in place while the photos scroll past it -->
-      <div class="about-text">
-        <h2 class="section-heading reveal-heading" data-reveal="heading">About Me</h2>
-        <p>
-          [Placeholder — write a short paragraph about yourself here: your
-          background, what you're studying, what drives you toward software
-          engineering, and a bit about your creative side as an artist and
-          designer. Two to four sentences reads best.]
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== EXPERIENCE ==================== -->
-  <section id="experience" class="section experience">
-    <div class="container experience-layout">
-
-      <!-- Left: stays pinned while the list on the right scrolls -->
-      <div class="experience-intro">
-        <h2 class="section-heading reveal-heading" data-reveal="heading">Experience</h2>
-        <a class="link-arrow" href="#" target="_blank" rel="noopener">
-          Resume
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-
-      <!-- Right: add more .experience-item blocks to list more roles -->
-      <div class="experience-list">
-        <article class="experience-item reveal-fade">
-          <h3 class="experience-role">Veradigm — Software Engineer Intern</h3>
-          <span class="experience-period">[Month Year] – [Month Year]</span>
-          <p class="experience-description">
-            [Placeholder — describe your responsibilities, the tech stack
-            you used, and a concrete impact or result from this role.]
-          </p>
-        </article>
-
-        <article class="experience-item reveal-fade" data-delay="1">
-          <h3 class="experience-role">[Company] — [Position]</h3>
-          <span class="experience-period">[Month Year] – [Month Year]</span>
-          <p class="experience-description">
-            [Placeholder — describe your responsibilities, the tech stack
-            you used, and a concrete impact or result from this role.]
-          </p>
-        </article>
-
-        <article class="experience-item reveal-fade" data-delay="2">
-          <h3 class="experience-role">[Company] — [Position]</h3>
-          <span class="experience-period">[Month Year] – [Month Year]</span>
-          <p class="experience-description">
-            [Placeholder — describe your responsibilities, the tech stack
-            you used, and a concrete impact or result from this role.]
-          </p>
-        </article>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== SOFTWARE ==================== -->
-  <section id="software" class="section software">
-    <div class="container">
-      <h2 class="section-heading reveal-heading" data-reveal="heading">Software</h2>
-
-      <!-- Slideshow row: larger featured cards. Add more .software-card
-           elements inside .slide-track to add more slides. -->
-      <div class="software-row software-slideshow">
-        <p class="software-row-label">Featured</p>
-        <button class="slide-arrow prev" id="slide-prev" aria-label="Previous project">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+    <header>
+        <button class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-        <div class="slide-track" id="slide-track">
+    </header>
 
-          <article class="software-card">
-            <a class="card-github" href="#" target="_blank" rel="noopener" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Art</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="https://linkedin.com/in/bela314" target="_blank">
+                LinkedIn →
             </a>
-            <div class="card-media placeholder-box">Project screenshot</div>
-            <h3 class="card-title subheading">[Project Name]</h3>
-            <p class="card-description">[Placeholder — one or two sentences describing what this project does and why you built it.]</p>
-            <div class="card-pills">
-              <span class="pill">Python</span>
-              <span class="pill">React</span>
-              <span class="pill">PostgreSQL</span>
-            </div>
-            <!-- Future: <a class="card-log-link link-arrow" href="#">Project log</a> -->
-          </article>
-
-          <article class="software-card">
-            <a class="card-github" href="#" target="_blank" rel="noopener" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            <a href="https://github.com/b-314" target="_blank">
+                GitHub →
             </a>
-            <div class="card-media placeholder-box">Project screenshot</div>
-            <h3 class="card-title subheading">[Project Name]</h3>
-            <p class="card-description">[Placeholder — one or two sentences describing what this project does and why you built it.]</p>
-            <div class="card-pills">
-              <span class="pill">Java</span>
-              <span class="pill">Spring Boot</span>
-            </div>
-          </article>
+        </div>
+    </nav>
+
+    <main>
+        <section class="landing">
+        <div class="hero">
+
+        <h1>Hi, I'm Bela.</h1>
+        <h2>Computer Science student.</h2>
+        <h2>Aspiring software engineer.</h2>
+        <h2>Artist and designer.</h2>
+
+        <div class="current">
+
+        <span class="gray">Currently</span>
+
+        <span>Software Engineer Intern @ Veradigm</span>
 
         </div>
-        <button class="slide-arrow next" id="slide-next" aria-label="Next project">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-
-      <!-- Grid row: smaller cards. Add more .software-card elements to
-           add more projects here. -->
-      <div class="software-row">
-        <p class="software-row-label">More Projects</p>
-        <div class="software-grid">
-
-          <article class="software-card reveal-fade">
-            <a class="card-github" href="#" target="_blank" rel="noopener" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-            </a>
-            <h3 class="card-title subheading">[Project Name]</h3>
-            <p class="card-description">[Placeholder description.]</p>
-            <div class="card-pills">
-              <span class="pill">C++</span>
-              <span class="pill">OpenGL</span>
-            </div>
-          </article>
-
-          <article class="software-card reveal-fade" data-delay="1">
-            <a class="card-github" href="#" target="_blank" rel="noopener" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-            </a>
-            <h3 class="card-title subheading">[Project Name]</h3>
-            <p class="card-description">[Placeholder description.]</p>
-            <div class="card-pills">
-              <span class="pill">JavaScript</span>
-              <span class="pill">Node.js</span>
-            </div>
-          </article>
-
-          <article class="software-card reveal-fade" data-delay="2">
-            <a class="card-github" href="#" target="_blank" rel="noopener" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-            </a>
-            <h3 class="card-title subheading">[Project Name]</h3>
-            <p class="card-description">[Placeholder description.]</p>
-            <div class="card-pills">
-              <span class="pill">Swift</span>
-            </div>
-          </article>
 
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- ==================== ART ==================== -->
-  <section id="art" class="section art">
-    <div class="container">
-      <h2 class="section-heading reveal-heading" data-reveal="heading">Art</h2>
-      <p class="art-intro">[Placeholder — a short description of your art: mediums you work in, themes you explore, or what drew you to design.]</p>
-
-      <!-- Masonry gallery. Add more .art-piece blocks to add more images.
-           data-description feeds the modal's info panel. -->
-      <div class="art-gallery" id="art-gallery">
-        <div class="art-piece" data-description="[Placeholder description for artwork 1 — medium, size, and the idea behind it.]">
-          <div class="placeholder-box" style="height:260px;">Artwork 1</div>
-        </div>
-        <div class="art-piece" data-description="[Placeholder description for artwork 2.]">
-          <div class="placeholder-box" style="height:340px;">Artwork 2</div>
-        </div>
-        <div class="art-piece" data-description="[Placeholder description for artwork 3.]">
-          <div class="placeholder-box" style="height:200px;">Artwork 3</div>
-        </div>
-        <div class="art-piece" data-description="[Placeholder description for artwork 4.]">
-          <div class="placeholder-box" style="height:300px;">Artwork 4</div>
-        </div>
-        <div class="art-piece" data-description="[Placeholder description for artwork 5.]">
-          <div class="placeholder-box" style="height:230px;">Artwork 5</div>
-        </div>
-        <div class="art-piece" data-description="[Placeholder description for artwork 6.]">
-          <div class="placeholder-box" style="height:280px;">Artwork 6</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; <span id="current-year"></span> Bela. Built with care.</p>
-  </div>
-</footer>
-
-<!-- ==================== ART MODAL ==================== -->
-<div class="art-modal-overlay" id="art-modal-overlay">
-  <div class="art-modal" id="art-modal">
-    <button class="art-modal-close" id="art-modal-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="art-modal-image">
-      <div class="placeholder-box" id="art-modal-image-box" style="height:100%;">Artwork</div>
-    </div>
-    <div class="art-modal-info">
-      <h3 class="subheading">Artwork title</h3>
-      <p id="art-modal-description">Description</p>
-    </div>
-  </div>
-</div>
-
-<script src="js/theme.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/scrollAnimations.js"></script>
-<script src="js/about.js"></script>
-<script src="js/software.js"></script>
-<script src="js/art.js"></script>
-<script src="js/butterflies.js"></script>
-<script src="js/main.js"></script>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
