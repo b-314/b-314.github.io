@@ -6,9 +6,24 @@
 }
 
 :root{
+   /* Backgrounds */
+   --bg-color:rgb(15, 15, 25);
+    --nav-bg:rgb(15, 15, 25);
+    --overlay-color:rgba(0,0,0,.6);
+
+   /* Text */
+    --text-color:#fafafa;
+    --secondary-text:#888888;
+
+   /* UI */
+    --icon-color:#fafafa;
+   --hover-opacity: 0.55;
+}
+
+body.light{
     /* Backgrounds */
-    --bg-color: #ffffff;
-    --nav-bg: #ffffff;
+    --bg-color: rgb(254, 254, 254); 
+    --nav-bg: rgb(254, 254, 254); 
     --overlay-color: rgba(0, 0, 0, 0.35);
 
     /* Text */
@@ -17,7 +32,6 @@
 
     /* UI */
     --icon-color: #000000;
-    --hover-opacity: 0.55;
 }
 
 body{
@@ -71,6 +85,36 @@ header{
 
 .menu-btn.active span:nth-child(3){
     transform:translateY(-13px) rotate(-45deg);
+}
+
+/* ---------------- THEME TOGGLE ---------------- */
+
+.theme-toggle{
+    position:fixed;
+    top:40px;
+    left:40px;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:none;
+    border:none;
+
+    color:var(--icon-color);
+    font-size:1.8rem;
+
+    cursor:pointer;
+    z-index:1001;
+
+    transition:color .3s, transform .2s;
+}
+
+.theme-toggle:hover{
+    transform:scale(1.1);
 }
 
 /* ---------------- OVERLAY ---------------- */
@@ -187,7 +231,7 @@ header{
 }
 
 .gray{
-    color:#999;
+    color: (--secondary-text);
     font-size:1.2rem;
 }
 
