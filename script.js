@@ -65,6 +65,6 @@ const observer = new IntersectionObserver((entries) => {
     threshold: 0.2
 });
 
-document.querySelectorAll(".reveal, .reveal-heading").forEach(el => {
+document.querySelectorAll(".reveal, .reveal-heading, .reveal-words").forEach(el => {
     observer.observe(el);
 });

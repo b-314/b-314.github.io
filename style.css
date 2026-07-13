@@ -398,6 +398,125 @@ header {
    }
 }
 
+/* ---------------- EXPERIENCE ---------------- */
+
+.experience-section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 12rem 60px;
+
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 7rem;
+}
+
+.experience-heading {
+    position: sticky;
+    top: 15vh;
+    align-self: start;
+}
+
+.experience-heading h2 {
+    font-family: "Ovo", serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.experience-item {
+    margin-bottom: 5rem;
+}
+
+.experience-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.company {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.date {
+    color: var(--secondary-text);
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.position {
+    margin: .5rem 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.experience-item ul {
+    padding-left: 1.2rem;
+}
+
+.experience-item li {
+    margin-bottom: .6rem;
+    line-height: 1.8;
+    color: var(--secondary-text);
+}
+
+/* ---------- Word Reveal ---------- */
+
+.reveal-words span {
+    display: inline-block;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+
+.reveal-words.visible span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger */
+
+.reveal-words span:nth-child(1) { transition-delay: .05s; }
+.reveal-words span:nth-child(2) { transition-delay: .15s; }
+.reveal-words span:nth-child(3) { transition-delay: .25s; }
+.reveal-words span:nth-child(4) { transition-delay: .35s; }
+.reveal-words span:nth-child(5) { transition-delay: .45s; }
+.reveal-words span:nth-child(6) { transition-delay: .55s; }
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:900px) {
+
+    .experience-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        padding: 7rem 30px;
+    }
+
+    .experience-heading {
+        position: static;
+    }
+
+    .experience-heading h2 {
+        font-size: 2.4rem;
+    }
+
+    .experience-top {
+        flex-direction: column;
+        gap: .4rem;
+    }
+
+    .date {
+        font-size: .9rem;
+    }
+}
+
 /* ---------- Mobile ---------- */
 
 @media (max-width:900px) {
