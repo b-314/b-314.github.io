@@ -16,16 +16,15 @@ overlay.addEventListener("click", toggleMenu);
 /* ---------------- THEME TOGGLE ---------------- */
 
 const themeToggle = document.querySelector(".theme-toggle");
-const themeIcon = themeToggle.querySelector("i");
 
 function applyLight() {
-    themeIcon.classList.remove("fa-sun-o");
-    themeIcon.classList.add("fa-moon-o");
+    themeToggle.textContent = "Dark mode →"; 
+    themeToggle.setAttribute("aria-label", "Switch to dark theme");
 }
 
 function applyDark() {
-    themeIcon.classList.remove("fa-moon-o");
-    themeIcon.classList.add("fa-sun-o");
+    themeToggle.textContent = "Light mode →";
+    themeToggle.setAttribute("aria-label", "Switch to light theme");
 }
 
 // Restore saved preference

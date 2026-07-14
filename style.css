@@ -91,28 +91,6 @@ header {
    transform: translateY(-13px) rotate(-45deg);
 }
 
-.theme-toggle {
-   position: absolute;
-
-   bottom: 40px;
-   right: 40px;
-   width: 40px;
-   height: 40px;
-
-   background: none;
-   border: none;
-
-   color: var(--icon-color);
-   font-size: 1.8rem;
-
-   cursor: pointer;
-   transition: color .3s, transform .2s;
-}
-
-.theme-toggle:hover {
-   transform: scale(1.1);
-}
-
 /* ---------------- OVERLAY ---------------- */
 
 .overlay {
@@ -144,10 +122,13 @@ header {
 
    background: var(--nav-bg);
 
-   padding: 120px 50px;
-
-   transition: .35s;
    z-index: 999;
+   transition: .35s;
+
+   display: flex; 
+   flex-direction: column; 
+   padding: 100px 50px 50px; 
+   overflow-y: auto; 
 }
 
 .nav-menu.active {
@@ -159,7 +140,7 @@ header {
 }
 
 .nav-menu li {
-   margin-bottom: 25px;
+   margin-top: 20px;
    text-align: right;
 }
 
@@ -178,11 +159,34 @@ header {
 }
 
 .social-links {
-   margin-top: 100px;
+   margin-top: 40px;
+   margin-bottom: auto; 
 
    display: flex;
    flex-direction: column;
    gap: 18px;
+}
+
+.theme-toggle {
+   background: none;
+   border: none;
+   cursor: pointer;
+
+   margin-top: 40px;
+   padding: 0; 
+
+   font-family: inherit; 
+   font-size: 1.2rem; 
+   color: var(--secondary-text);
+   text-align: right; 
+   align-self: flex-end;
+
+   transition: color .2s, transform .2s;
+}
+
+.theme-toggle:hover {
+   opacity: var(--hover-opacity); 
+   color: var(--text-color); 
 }
 
 /* ---------------- LANDING ---------------- */
@@ -464,6 +468,7 @@ header {
    .nav-menu {
       width: 100%;
       right: -100%;
+      padding: 100px 30px 40px;
    }
 
    .about-section {
