@@ -347,16 +347,23 @@ header {
    gap: 7rem;
 }
 
-.experience-heading {
+.experience-text {
    position: sticky;
    top: 15vh;
    align-self: start;
 }
 
-.experience-heading h2 {
+.experience-text h2 {
    font-family: "Ovo", serif;
    font-size: 3.2rem;
    font-weight: 300;
+   margin-bottom: 2rem;
+}
+
+.experience-text p {
+   font-size: 1.2rem;
+   line-height: 1.8;
+   max-width: 34rem;
 }
 
 .experience-item {
@@ -499,7 +506,7 @@ header {
       padding: 7rem 30px;
    }
 
-   .about-text, .experience-heading {
+   .about-text, .experience-text {
       position: static;
    }
 
@@ -516,7 +523,7 @@ header {
       font-size: 1.4rem;
    }
 
-   .experience-heading h2, .about-text h2 {
+   .experience-text h2, .about-text h2 {
       font-size: 2.4rem;
    }
 
