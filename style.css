@@ -14,6 +14,7 @@ html {
    --bg-color: rgb(15, 15, 25);
    --nav-bg: rgb(15, 15, 25);
    --overlay-color: rgba(0, 0, 0, .6);
+   --card-bg: hsl(240, 25%, 30%);
 
    /* Text */
    --text-color: #fafafa;
@@ -31,7 +32,8 @@ body.light {
    /* Backgrounds */
    --bg-color: rgb(254, 254, 254);
    --nav-bg: rgb(254, 254, 254);
-   --overlay-color: rgba(0, 0, 0, 0.35);
+   --overlay-color: rgba(0, 0, 0, 0.30);
+   --card-bg:hsl(0, 0%, 98%);
 
    /* Text */
    --text-color: #000000;
@@ -256,6 +258,12 @@ header {
    position: sticky;
    top: 15vh;
    align-self: start;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   min-height: 40vh;
+   margin-bottom: 10vh;
 }
 
 .about-text h2 {
@@ -370,6 +378,10 @@ header {
 
 .experience-item {
    margin-bottom: 5rem;
+}
+
+.experience-item:last-child {
+   margin-bottom: 0;
 }
 
 .experience-top {
@@ -489,9 +501,7 @@ header {
 
 .projects-grid {
    display: grid;
-
    grid-template-columns: repeat(4, 1fr);
-
    grid-auto-rows: 220px;
 
    gap: 1.5rem;
@@ -501,12 +511,11 @@ header {
 
 .project {
    position: relative;
-
    overflow: hidden;
 
    border-radius: 10px;
 
-   background: var(--nav-bg);
+   background: var(--card-bg);
 
    background-size: cover;
    background-position: center;
@@ -542,7 +551,7 @@ header {
    position: absolute;
    inset: 0;
 
-   background: rgba(0, 0, 0, .45);
+   background: var(--overlay-color);
    transition: background .35s ease;
 }
 
@@ -550,7 +559,7 @@ header {
 
 .project:hover {
    transform: translateY(-8px);
-   box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+   box-shadow: 0 20px 40px rgba(0, 0, 0, .20);
 }
 
 .project:hover::before {
@@ -628,6 +637,18 @@ header {
       flex-direction: column-reverse;
 
       gap: 4rem;
+   }
+
+   .about-text {
+      position: sticky;
+      top: 15vh;
+      align-self: start;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 20vh;
+      margin-bottom: 1vh;
    }
 
    .photo-grid {
