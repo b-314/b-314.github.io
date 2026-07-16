@@ -33,7 +33,7 @@ body.light {
    --bg-color: rgb(254, 254, 254);
    --nav-bg: rgb(254, 254, 254);
    --overlay-color: rgba(0, 0, 0, 0.30);
-   --card-bg:hsl(0, 0%, 98%);
+   --card-bg: hsl(0, 0%, 98%);
 
    /* Text */
    --text-color: #000000;
@@ -53,9 +53,9 @@ body {
 .about-section,
 .experience-section,
 .projects-section {
-    padding: var(--section-spacing) 60px;
-    max-width: 1400px;
-    margin: 0 auto;
+   padding: var(--section-spacing) 60px;
+   max-width: 1400px;
+   margin: 0 auto;
 }
 
 /* ---------------- HEADER ---------------- */
@@ -339,7 +339,6 @@ header {
    background: linear-gradient(transparent,
          rgba(0, 0, 0, .65));
    color: white;
-
    font-size: .95rem;
 
    transform: translateY(100%);
@@ -559,7 +558,8 @@ header {
 
 .project:hover {
    transform: translateY(-8px);
-   box-shadow: 0 20px 40px rgba(0, 0, 0, .20);
+   box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+
 }
 
 .project:hover::before {
@@ -599,11 +599,9 @@ header {
 
    top: 18px;
    right: 18px;
-
    z-index: 3;
 
    color: white;
-
    font-size: 1.5rem;
 
    transition:
@@ -614,10 +612,154 @@ header {
 
 .github-link:hover {
    opacity: .7;
-
    transform: scale(1.1);
 }
 
+/* ---------------- ART ---------------- */
+
+.art-section {
+   max-width: 1400px;
+   margin: auto;
+
+   padding: 7rem 60px;
+}
+
+.art-heading {
+   font-family: "Ovo", serif;
+   font-size: 3.2rem;
+   font-weight: 300;
+
+   margin-bottom: 3rem;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery {
+   column-count: 4;
+   column-gap: 1.5rem;
+}
+
+.gallery img {
+   width: 100%;
+   margin-bottom: 1.5rem;
+
+   display: block;
+   break-inside: avoid;
+   border-radius: 8px;
+
+   cursor: pointer;
+   transition:
+      transform .35s,
+      opacity .35s;
+}
+
+.gallery img:hover {
+   transform: scale(1.02);
+   opacity: .92;
+}
+
+/* ---------------- Modal ---------------- */
+
+.art-modal {
+   position: fixed;
+   inset: 0;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   background: rgba(0, 0, 0, .55);
+   opacity: 0;
+   visibility: hidden;
+
+   transition: .3s;
+   z-index: 2000;
+}
+
+.art-modal.active {
+   opacity: 1;
+   visibility: visible;
+}
+
+/* ---------- Card ---------- */
+
+.art-card {
+   position: relative;
+
+   background: var(--bg-color);
+   color: var(--text-color);
+
+   width: min(1000px, 90vw);
+   max-height: 85vh;
+
+   display: grid;
+   grid-template-columns: 1.2fr 1fr;
+   border-radius: 10px;
+
+   overflow: hidden;
+}
+
+/* ---------- Image ---------- */
+
+.art-image {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   background: #111;
+}
+
+.art-image img {
+   max-width: 100%;
+   max-height: 85vh;
+
+   display: block;
+}
+
+/* ---------- Text ---------- */
+
+.art-info {
+   padding: 3rem;
+   overflow-y: auto;
+}
+
+.art-info h3 {
+   font-family: "Ovo", serif;
+   font-size: 2rem;
+   font-weight: 300;
+
+   margin-bottom: 1.5rem;
+}
+
+.art-info p {
+   font-family: "Mulish", sans-serif;
+   line-height: 1.8;
+
+   margin-bottom: 2rem;
+}
+
+.art-info a {
+   color: inherit;
+}
+
+/* ---------- Close ---------- */
+
+.close-art {
+   position: absolute;
+
+   top: 18px;
+   right: 18px;
+   width: 42px;
+   height: 42px;
+
+   border: none;
+   background: none;
+   color: var(--text-color);
+   font-size: 2rem;
+
+   cursor: pointer;
+   z-index: 5;
+}
 
 /* ---------- MOBILE ---------- */
 
@@ -706,6 +848,29 @@ header {
 
    .project-content h3 {
       font-size: 1.5rem;
+   }
+
+   .gallery {
+      column-count: 2;
+   }
+
+   .art-card {
+      grid-template-columns: 1fr;
+
+      width: 92vw;
+      max-height: 90vh;
+   }
+
+   .art-section {
+      padding: 5rem 30px;
+   }
+
+   .art-heading {
+      font-size: 2.4rem;
+   }
+
+   .art-image {
+      max-height: 45vh;
    }
 
    .hero h1 {

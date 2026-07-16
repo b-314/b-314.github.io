@@ -134,6 +134,7 @@
         </aside>
       </div>
     </section>
+
     <section id="experience" class="experience-section">
       <aside class="experience-text">
         <h2 class="reveal-heading">
@@ -205,6 +206,7 @@
         </article>
       </div>
     </section>
+
     <section id="projects" class="projects-section">
       <h2 class="projects-heading reveal-heading">
         <span>Projects</span>
@@ -265,7 +267,7 @@
           <div class="project-content">
             <h3>Flight Delays</h3>
             <p>
-              Machine Learning on flight information. 
+              Machine Learning on flight information.
             </p>
           </div>
         </article>
@@ -282,6 +284,37 @@
         </article>
       </div>
     </section>
+
+    <section id="art" class="art-section">
+      <h2 class="art-heading reveal-heading">
+        <span>Art</span>
+      </h2>
+      <div class="gallery">
+        <img src="images/art/rose.jpg" alt="" data-title="Rose"
+          data-description="Took half a year smh">
+        <img src="images/art/tulips.jpg" alt="" data-title="Tulips"
+          data-description="Started in paint, finished with pencil." data-reference=""
+          data-reference="<a href='https://www.pinterest.com/pin/1028931846159926136/' target='_blank'>Reference Image</a>">
+        <img src="images/art/honk.jpg" alt="" data-title="Honk"
+          data-description="Made in 2 hours." data-reference="">
+        <img src="images/art/llamacorn.jpg" alt="" data-title="Llamacorn" data-description="Wellness day painting."
+          data-reference="">
+      </div>
+    </section>
+
+    <div class="art-modal">
+      <div class="art-card">
+        <button class="close-art">&times;</button>
+        <div class="art-image">
+          <img id="modal-image">
+        </div>
+        <div class="art-info">
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <div id="modal-reference"></div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="script.js"></script>

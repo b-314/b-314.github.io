@@ -4,7 +4,7 @@ const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector(".nav-menu");
 const overlay = document.querySelector(".overlay");
 
-function toggleMenu(){
+function toggleMenu() {
     menuBtn.classList.toggle("active");
     nav.classList.toggle("active");
     overlay.classList.toggle("active");
@@ -18,7 +18,7 @@ overlay.addEventListener("click", toggleMenu);
 const themeToggle = document.querySelector(".theme-toggle");
 
 function applyLight() {
-    themeToggle.textContent = "Dark mode →"; 
+    themeToggle.textContent = "Dark mode →";
     themeToggle.setAttribute("aria-label", "Switch to dark theme");
 }
 
@@ -32,22 +32,22 @@ const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "light") {
     document.body.classList.add("light");
-    applyLight(); 
-} 
+    applyLight();
+}
 else {
     document.body.classList.remove("light");
-    applyDark(); 
+    applyDark();
 }
 
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light");
 
     if (document.body.classList.contains("light")) {
-       applyLight(); 
+        applyLight();
         localStorage.setItem("theme", "light");
-    } 
+    }
     else {
-        applyDark(); 
+        applyDark();
         localStorage.setItem("theme", "dark");
     }
 });
@@ -66,4 +66,39 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal, .reveal-heading, .reveal-words").forEach(el => {
     observer.observe(el);
+});
+
+/* ---------------- ART MODAL ---------------- */
+
+const modal = document.querySelector(".art-modal");
+
+const modalImage = document.getElementById("modal-image");
+const modalTitle = document.getElementById("modal-title");
+const modalDescription = document.getElementById("modal-description");
+const modalReference = document.getElementById("modal-reference");
+
+document.querySelectorAll(".gallery img").forEach(image => {
+    image.addEventListener("click", () => {
+        modalImage.src = image.src;
+        modalTitle.textContent = image.dataset.title;
+        modalDescription.textContent = image.dataset.description;
+        modalReference.innerHTML = image.dataset.reference;
+        modal.classList.add("active");
+    });
+});
+
+document.querySelector(".close-art").addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.classList.remove("active");
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        modal.classList.remove("active");
+    }
 });
