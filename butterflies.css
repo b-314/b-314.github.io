@@ -1,4 +1,4 @@
-/* Mirror the structural butterfly rules if loaded independently */
+/* ---------------- BUTTERFLY WING STRUCTURE ---------------- */
 .butterfly-container {
    position: absolute;
    left: 0;
@@ -19,46 +19,81 @@
 
 .body-center {
    position: absolute;
-   top: 8px;
+   top: 6px;
    left: 18px;
    width: 4px;
-   height: 24px;
+   height: 28px;
    background: #333;
    border-radius: 2px;
    z-index: 10;
 }
 
-.wing {
+/* Wing Base styles */
+.wing-group {
+   position: absolute;
+   top: 4px;
+   width: 32px;
+   height: 36px;
+}
+
+.wing-piece {
    position: absolute;
    background: linear-gradient(135deg, #ff007f, #7f00ff);
    opacity: 0.85;
    box-shadow: 0 0 12px rgba(255, 0, 127, 0.6);
 }
 
-.forewing {
-   width: 28px;
-   height: 26px;
-   border-radius: 50% 60% 20% 40%;
-}
-
-.hindwing {
-   top: 20px;
-   width: 20px;
-   height: 20px;
-   border-radius: 30% 40% 60% 50%;
-}
-
+/* --- LEFT WING GROUP --- */
 .wing-left {
-   left: -9px;
+   left: -14px;
    transform-origin: right center;
    animation: flap-left 0.15s infinite ease-in-out alternate;
 }
 
+/* Left Forewing: Soft rounded triangle with curved arch reaching up */
+.wing-left .forewing {
+   top: 0;
+   left: 0;
+   width: 28px;
+   height: 22px;
+   clip-path: path("M 28 22 C 20 10, 12 2, 2 0 C 10 14, 18 22, 28 22 Z");
+}
+
+/* Left Hindwing: Soft teardrop shape curving back toward lower body */
+.wing-left .hindwing {
+   top: 18px;
+   left: 4px;
+   width: 22px;
+   height: 18px;
+   clip-path: path("M 22 0 C 14 2, 2 8, 0 14 C 4 18, 12 16, 22 10 Z");
+}
+
+
+/* --- RIGHT WING GROUP (Mirrored and connected to body) --- */
 .wing-right {
-   left: 23px;
+   left: 22px;
    transform-origin: left center;
    animation: flap-right 0.15s infinite ease-in-out alternate;
 }
+
+/* Right Forewing: Horizontally mirrored soft rounded triangle */
+.wing-right .forewing {
+   top: 0;
+   left: 0;
+   width: 28px;
+   height: 22px;
+   clip-path: path("M 0 22 C 8 10, 16 2, 26 0 C 18 14, 10 22, 0 22 Z");
+}
+
+/* Right Hindwing: Horizontally mirrored teardrop shape */
+.wing-right .hindwing {
+   top: 18px;
+   left: -4px;
+   width: 22px;
+   height: 18px;
+   clip-path: path("M 0 0 C 8 2, 20 8, 22 14 C 18 18, 10 16, 0 10 Z");
+}
+
 
 @keyframes flap-left {
    0% { transform: rotateY(-70deg); }
