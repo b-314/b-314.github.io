@@ -8,13 +8,18 @@ class Butterfly {
     this.boxWidth = rect.width || window.innerWidth * 0.66;
     this.boxHeight = rect.height || window.innerHeight;
 
-    this.x = Math.random() * (this.boxWidth - 200) + 100;
-    this.y = Math.random() * (this.boxHeight - 200) + 100;
-    this.speedX = (Math.random() - 0.5) * 4;
-    this.speedY = (Math.random() - 0.5) * 4;
+    // Initialize positions safely inside the center area
+    this.x = this.boxWidth * 0.2 + Math.random() * (this.boxWidth * 0.6);
+    this.y = this.boxHeight * 0.2 + Math.random() * (this.boxHeight * 0.6);
 
-    this.angle = Math.random() * Math.PI * 2;
-    this.scale = 0.5 + Math.random() * 0.8;
+    // Movement vectors
+    const angle = Math.random() * Math.PI * 2;
+    this.speed = 3.5; // Slightly faster base speed
+    this.vx = Math.cos(angle) * this.speed;
+    this.vy = Math.sin(angle) * this.speed;
+
+    this.wanderAngle = Math.random() * Math.PI * 2;
+    this.scale = 0.5 + Math.random() * 0.7;
 
     this.containerBox.appendChild(this.domElement);
   }
@@ -65,69 +70,102 @@ class Butterfly {
     const centerX = this.boxWidth / 2;
     const centerY = this.boxHeight / 2;
 
+    // 1. Organic Wandering (Smooth curve generation)
+    this.wanderAngle += (Math.random() - 0.5) * 0.6;
+    const wanderX = Math.cos(this.wanderAngle) * 0.4;
+    const wanderY = Math.sin(this.wanderAngle) * 0.4;
+
+    // 2. Center Affinity (Spending more time closer to the center)
+    const toCenterX = centerX - this.x;
+    const toCenterY = centerY - this.y;
+    const distToCenter = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
+    let centerPullX = 0;
+    let centerPullY = 0;
+
+    // Scale pull strength based on how far out they drift
+    if (distToCenter > this.boxWidth * 0.25) {
+      const centerFactor = 0.0008 * (distToCenter / (this.boxWidth * 0.1));
+      centerPullX = toCenterX * centerFactor;
+      centerPullY = toCenterY * centerFactor;
+    }
+
+    // 3. Anticipatory Edge Turning (Curving away before hitting boundaries)
+    const margin = 120;
+    let edgeX = 0;
+    let edgeY = 0;
+
+    if (this.x < margin) {
+      const intensity = (margin - this.x) / margin;
+      edgeX += intensity * 0.3;
+    } else if (this.x > this.boxWidth - margin) {
+      const intensity = (this.x - (this.boxWidth - margin)) / margin;
+      edgeX -= intensity * 0.3;
+    }
+
+    if (this.y < margin) {
+      const intensity = (margin - this.y) / margin;
+      edgeY += intensity * 0.3;
+    } else if (this.y > this.boxHeight - margin) {
+      const intensity = (this.y - (this.boxHeight - margin)) / margin;
+      edgeY -= intensity * 0.3;
+    }
+
+    // 4. Cursor Interaction (Scattering / Tracking)
+    let cursorFx = 0;
+    let cursorFy = 0;
     if (isCursorActive && targetCursor) {
       const dx = targetCursor.x - this.x;
       const dy = targetCursor.y - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
+      const repulsionRadius = 150;
 
-      if (dist > 10) {
-        this.speedX += (dx / dist) * 0.25;
-        this.speedY += (dy / dist) * 0.25;
+      if (dist < repulsionRadius && dist > 0) {
+        const force = (repulsionRadius - dist) / repulsionRadius;
+        cursorFx -= (dx / dist) * force * 0.8;
+        cursorFy -= (dy / dist) * force * 0.8;
       }
-    } else {
-      this.angle += (Math.random() - 0.5) * 0.4;
-      this.speedX += Math.cos(this.angle) * 0.15;
-      this.speedY += Math.sin(this.angle) * 0.15;
     }
 
-    // Separation behavior: Keep space between butterflies
+    // 5. Flocking / Personal Space from other butterflies
+    let separateX = 0;
+    let separateY = 0;
     allButterflies.forEach((other, idx) => {
       if (idx !== this.index) {
         const sdx = this.x - other.x;
         const sdy = this.y - other.y;
         const sdist = Math.sqrt(sdx * sdx + sdy * sdy);
-        const minDistance = 45; // Minimum personal space
+        const minDistance = 60;
 
         if (sdist < minDistance && sdist > 0) {
           const force = (minDistance - sdist) / minDistance;
-          this.speedX += (sdx / sdist) * force * 0.4;
-          this.speedY += (sdy / sdist) * force * 0.4;
+          separateX += (sdx / sdist) * force * 0.25;
+          separateY += (sdy / sdist) * force * 0.25;
         }
       }
     });
 
-    // Increased padding so they stay much farther from the borders
-    const padding = 120;
-    const turnForce = 0.6;
+    // Aggregate forces onto velocity
+    this.vx += wanderX + centerPullX + edgeX + cursorFx + separateX;
+    this.vy += wanderY + centerPullY + edgeY + cursorFy + separateY;
 
-    // Pull heavily back toward the center if hitting/approaching the padding zone
-    if (this.x < padding) {
-      this.speedX += turnForce;
-      this.speedX += (centerX - this.x) * 0.005;
-    }
-    if (this.x > this.boxWidth - padding) {
-      this.speedX -= turnForce;
-      this.speedX += (centerX - this.x) * 0.005;
-    }
-    if (this.y < padding) {
-      this.speedY += turnForce;
-      this.speedY += (centerY - this.y) * 0.005;
-    }
-    if (this.y > this.boxHeight - padding) {
-      this.speedY -= turnForce;
-      this.speedY += (centerY - this.y) * 0.005;
+    // Speed normalization & clamping (ensures fluid, consistent motion)
+    const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    const targetSpeed = 3.8; // Slightly faster overall pace
+
+    if (currentSpeed > 0) {
+      this.vx = (this.vx / currentSpeed) * Math.min(targetSpeed, currentSpeed);
+      this.vy = (this.vy / currentSpeed) * Math.min(targetSpeed, currentSpeed);
     }
 
-    const maxSpeed = 3.5;
-    this.speedX = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedX));
-    this.speedY = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedY));
+    // Apply movement
+    this.x += this.vx;
+    this.y += this.vy;
 
-    this.x += this.speedX;
-    this.y += this.speedY;
+    // Calculate heading rotation smoothly
+    const rotationRad = Math.atan2(this.vy, this.vx);
+    const rotationDeg = (rotationRad * 180 / Math.PI) + 90;
 
-    const rotationRad = Math.atan2(this.speedY, this.speedX);
-    const rotationDeg = (rotationRad * 180 / Math.PI) - 90;
-
+    // Render updates
     this.domElement.style.transform = `translate3d(${this.x}px, ${this.y}px, 0) scale(${this.scale})`;
     this.domElement.firstElementChild.style.transform = `rotateZ(${rotationDeg}deg)`;
   }
@@ -161,10 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(stopTimer);
     stopTimer = setTimeout(() => {
       cursorMoving = false;
-      butterflySwarm.forEach(b => {
-        b.speedX = (Math.random() - 0.5) * 6;
-        b.speedY = (Math.random() - 0.5) * 6;
-      });
     }, 1500);
   });
 
