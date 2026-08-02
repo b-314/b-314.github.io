@@ -20,13 +20,11 @@
 .body-center {
    position: absolute;
    top: 12px;
-   left: 16px;
+   left: 18px;
    width: 4px;
    height: 25px;
    background: #333;
    border-radius: 2px;
-   z-index: 10;
-   transform: translateZ(10px);
    z-index: 10;
 }
 
@@ -42,12 +40,12 @@
    position: absolute;
    background: var(--text-color); 
    opacity: 0.85;
-   box-shadow: 0 0 12px rgba(255, 253, 254, 0.6);
+   box-shadow: 0 0 12px rgba(255, 236, 246, 0.6);
 }
 
 /* --- LEFT WING GROUP --- */
 .wing-left {
-   left: -17px;
+   left: -14px;
    transform-origin: right center;
    animation: flap-left 0.30s infinite ease-in-out alternate;
 }
@@ -72,7 +70,7 @@
 
 /* --- RIGHT WING GROUP (Mirrored & Connected) --- */
 .wing-right {
-   left: 21px;
+   left: 20px;
    transform-origin: left center;
    animation: flap-right 0.30s infinite ease-in-out alternate;
 }
@@ -89,7 +87,7 @@
 /* Right Hindwing: Horizontally mirrored broad teardrop */
 .wing-right .hindwing {
    top: 18px;
-   left: -4px;
+   left: 0px;
    width: 28px;
    height: 20px;
    clip-path: path("M 0 2 C 10 0, 26 8, 28 14 C 22 20, 12 18, 0 10 Z");
