@@ -14,7 +14,7 @@ class Butterfly {
 
     // Movement vectors
     const angle = Math.random() * Math.PI * 2;
-    this.speed = 3.5; // Slightly faster base speed
+    this.speed = 3.5;
     this.vx = Math.cos(angle) * this.speed;
     this.vy = Math.sin(angle) * this.speed;
 
@@ -70,21 +70,20 @@ class Butterfly {
     const centerX = this.boxWidth / 2;
     const centerY = this.boxHeight / 2;
 
-    // 1. Organic Wandering (Smooth curve generation)
+    // 1. Organic Wandering (Keeps them fluttering randomly)
     this.wanderAngle += (Math.random() - 0.5) * 0.6;
-    const wanderX = Math.cos(this.wanderAngle) * 0.4;
-    const wanderY = Math.sin(this.wanderAngle) * 0.4;
+    const wanderX = Math.cos(this.wanderAngle) * 0.5;
+    const wanderY = Math.sin(this.wanderAngle) * 0.5;
 
-    // 2. Center Affinity (Spending more time closer to the center)
+    // 2. Center Affinity (Balances out total center pull)
     const toCenterX = centerX - this.x;
     const toCenterY = centerY - this.y;
     const distToCenter = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
     let centerPullX = 0;
     let centerPullY = 0;
-
-    // Scale pull strength based on how far out they drift
+    
     if (distToCenter > this.boxWidth * 0.25) {
-      const centerFactor = 0.0008 * (distToCenter / (this.boxWidth * 0.1));
+      const centerFactor = 0.0006 * (distToCenter / (this.boxWidth * 0.1));
       centerPullX = toCenterX * centerFactor;
       centerPullY = toCenterY * centerFactor;
     }
@@ -96,37 +95,37 @@ class Butterfly {
 
     if (this.x < margin) {
       const intensity = (margin - this.x) / margin;
-      edgeX += intensity * 0.3;
+      edgeX += intensity * 0.4;
     } else if (this.x > this.boxWidth - margin) {
       const intensity = (this.x - (this.boxWidth - margin)) / margin;
-      edgeX -= intensity * 0.3;
+      edgeX -= intensity * 0.4;
     }
 
     if (this.y < margin) {
       const intensity = (margin - this.y) / margin;
-      edgeY += intensity * 0.3;
+      edgeY += intensity * 0.4;
     } else if (this.y > this.boxHeight - margin) {
       const intensity = (this.y - (this.boxHeight - margin)) / margin;
-      edgeY -= intensity * 0.3;
+      edgeY -= intensity * 0.4;
     }
 
-    // 4. Cursor Interaction (Scattering / Tracking)
+    // 4. Cursor Following (Attraction behavior)
     let cursorFx = 0;
     let cursorFy = 0;
     if (isCursorActive && targetCursor) {
       const dx = targetCursor.x - this.x;
       const dy = targetCursor.y - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const repulsionRadius = 150;
 
-      if (dist < repulsionRadius && dist > 0) {
-        const force = (repulsionRadius - dist) / repulsionRadius;
-        cursorFx -= (dx / dist) * force * 0.8;
-        cursorFy -= (dy / dist) * force * 0.8;
+      // Pull toward cursor gently if they are a bit far away, let wander take over close up
+      if (dist > 30) {
+        const pullStrength = Math.min(0.3, dist * 0.002);
+        cursorFx = (dx / dist) * pullStrength;
+        cursorFy = (dy / dist) * pullStrength;
       }
     }
 
-    // 5. Flocking / Personal Space from other butterflies
+    // 5. Flocking / Personal Space (Prevents them from clumping together)
     let separateX = 0;
     let separateY = 0;
     allButterflies.forEach((other, idx) => {
@@ -134,23 +133,23 @@ class Butterfly {
         const sdx = this.x - other.x;
         const sdy = this.y - other.y;
         const sdist = Math.sqrt(sdx * sdx + sdy * sdy);
-        const minDistance = 60;
+        const minDistance = 50;
 
         if (sdist < minDistance && sdist > 0) {
           const force = (minDistance - sdist) / minDistance;
-          separateX += (sdx / sdist) * force * 0.25;
-          separateY += (sdy / sdist) * force * 0.25;
+          separateX += (sdx / sdist) * force * 0.3;
+          separateY += (sdy / sdist) * force * 0.3;
         }
       }
     });
 
-    // Aggregate forces onto velocity
+    // Aggregate all forces onto velocity
     this.vx += wanderX + centerPullX + edgeX + cursorFx + separateX;
     this.vy += wanderY + centerPullY + edgeY + cursorFy + separateY;
 
-    // Speed normalization & clamping (ensures fluid, consistent motion)
+    // Speed normalization & clamping (maintains fluid, graceful movement speed)
     const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-    const targetSpeed = 3.8; // Slightly faster overall pace
+    const targetSpeed = 4.0; // Paced slightly faster
 
     if (currentSpeed > 0) {
       this.vx = (this.vx / currentSpeed) * Math.min(targetSpeed, currentSpeed);
@@ -184,8 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let mousePos = null;
   let isCursorInBox = false;
-  let cursorMoving = false;
-  let stopTimer = null;
 
   containerBox.addEventListener('mousemove', (e) => {
     const rect = containerBox.getBoundingClientRect();
@@ -194,23 +191,16 @@ document.addEventListener("DOMContentLoaded", () => {
       y: e.clientY - rect.top
     };
     isCursorInBox = true;
-    cursorMoving = true;
-
-    clearTimeout(stopTimer);
-    stopTimer = setTimeout(() => {
-      cursorMoving = false;
-    }, 1500);
   });
 
   containerBox.addEventListener('mouseleave', () => {
     isCursorInBox = false;
     mousePos = null;
-    clearTimeout(stopTimer);
   });
 
   function animationLoop() {
-    const activeTracking = isCursorInBox && cursorMoving;
-    butterflySwarm.forEach(butterfly => butterfly.update(mousePos, activeTracking, butterflySwarm));
+    // Pass isCursorInBox directly so they track the mouse continuously while inside
+    butterflySwarm.forEach(butterfly => butterfly.update(mousePos, isCursorInBox, butterflySwarm));
     requestAnimationFrame(animationLoop);
   }
 

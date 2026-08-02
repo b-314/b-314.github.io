@@ -40,7 +40,7 @@
 
 .wing-piece {
    position: absolute;
-   background: white; 
+   background: var(--text-color); 
    opacity: 0.85;
    box-shadow: 0 0 12px rgba(255, 253, 254, 0.6);
 }
@@ -54,11 +54,11 @@
 
 /* Left Forewing: Wide, sweeping rounded triangle with a deeper bottom curve */
 .wing-left .forewing {
-   top: 0;
+   top: -4px;
    left: 0;
    width: 32px;
    height: 28px;
-   clip-path: path("M 32 24 C 22 10, 14 2, 2 0 C 10 20, 20 28, 32 24 Z");
+   clip-path: path('M 32 24 C 22 10, 14 2, 2 0 C 10 26, 20 28, 32 24 Z');
 }
 
 /* Left Hindwing: Broader, full teardrop shape curving back up to the body */
@@ -79,11 +79,11 @@
 
 /* Right Forewing: Horizontally mirrored wide triangle with a deeper bottom curve */
 .wing-right .forewing {
-   top: 0;
+   top: -4px;
    left: 0;
    width: 32px;
    height: 28px;
-   clip-path: path("M 0 24 C 10 10, 18 2, 30 0 C 22 20, 12 28, 0 24 Z");
+   clip-path: path('M 0 24 C 10 10, 18 2, 30 0 C 22 26, 12 28, 0 24 Z');
 }
 
 /* Right Hindwing: Horizontally mirrored broad teardrop */
