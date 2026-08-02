@@ -14,7 +14,7 @@ class Butterfly {
 
     // Movement vectors
     const angle = Math.random() * Math.PI * 2;
-    this.speed = 3.5;
+    this.speed = 3;
     this.vx = Math.cos(angle) * this.speed;
     this.vy = Math.sin(angle) * this.speed;
 
@@ -118,8 +118,8 @@ class Butterfly {
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       // Pull toward cursor gently if they are a bit far away, let wander take over close up
-      if (dist > 30) {
-        const pullStrength = Math.min(0.3, dist * 0.002);
+      if (dist > 10) {
+        const pullStrength = Math.min(1, dist * 0.01);
         cursorFx = (dx / dist) * pullStrength;
         cursorFy = (dy / dist) * pullStrength;
       }
@@ -149,7 +149,7 @@ class Butterfly {
 
     // Speed normalization & clamping (maintains fluid, graceful movement speed)
     const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-    const targetSpeed = 4.0; // Paced slightly faster
+    const targetSpeed = 3.6; // Paced slightly faster
 
     if (currentSpeed > 0) {
       this.vx = (this.vx / currentSpeed) * Math.min(targetSpeed, currentSpeed);
@@ -175,7 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!containerBox) return;
 
   const butterflySwarm = [];
-  const totalButterflies = 12;
+  const totalButterflies = 9;
+  const maxButterflies = 18; 
 
   for (let i = 0; i < totalButterflies; i++) {
     butterflySwarm.push(new Butterfly(containerBox, i));
@@ -198,8 +199,25 @@ document.addEventListener("DOMContentLoaded", () => {
     mousePos = null;
   });
 
+  containerBox.addEventListener('click', (e) => {
+    if (butterflySwarm.length >= maxButterflies) return;
+
+    const rect = containerBox.getBoundingClientRect();
+    mousePos = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+
+    const newIndex = butterflySwarm.length;
+    const newButterfly = new Butterfly(containerBox, newIndex);
+
+    newButterfly.x = mousePos.x;
+    newButterfly.y = mousePos.y;
+
+    butterflySwarm.push(newButterfly);
+  });
+
   function animationLoop() {
-    // Pass isCursorInBox directly so they track the mouse continuously while inside
     butterflySwarm.forEach(butterfly => butterfly.update(mousePos, isCursorInBox, butterflySwarm));
     requestAnimationFrame(animationLoop);
   }

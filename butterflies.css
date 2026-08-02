@@ -63,9 +63,9 @@
 .wing-left .hindwing {
    top: 18px;
    left: 4px;
-   width: 28px;
+   width: 26px;
    height: 20px;
-   clip-path: path("M 28 2 C 18 0, 2 8, 0 14 C 6 20, 16 18, 28 10 Z");
+   clip-path: path("M 28 2 C 18 0, 2 8, 0 12 C 6 20, 16 18, 28 10 Z");
 }
 
 /* --- RIGHT WING GROUP (Mirrored & Connected) --- */
@@ -88,9 +88,9 @@
 .wing-right .hindwing {
    top: 18px;
    left: 0px;
-   width: 28px;
+   width: 26px;
    height: 20px;
-   clip-path: path("M 0 2 C 10 0, 26 8, 28 14 C 22 20, 12 18, 0 10 Z");
+   clip-path: path("M 0 2 C 10 0, 26 8, 28 12 C 22 20, 12 18, 0 10 Z");
 }
 
 @keyframes flap-left {
