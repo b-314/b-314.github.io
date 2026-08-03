@@ -45,7 +45,7 @@
 
 /* --- LEFT WING GROUP --- */
 .wing-left {
-   left: -14px;
+   left: -12px;
    transform-origin: right center;
    animation: flap-left 0.30s infinite ease-in-out alternate;
 }
