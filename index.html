@@ -45,13 +45,13 @@
 
   <nav class="nav-menu">
     <ul>
-      <li><a href="#landing">Landing</a></li>
+      <li><a href="#landing">Home</a></li>
       <li><a href="#about">About Me</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#art">Art</a></li>
+      <li><a href="#projects">Software</a></li>
+      <li><a href="#art">Art Gallery</a></li>
     </ul>
-
+  
     <div class="social-links">
       <a href="https://linkedin.com/in/bela314" target="_blank">
         LinkedIn →
@@ -60,10 +60,12 @@
         GitHub →
       </a>
     </div>
-
-    <button class="theme-toggle" aria-label="Toggle theme">
-      Light mode →
-    </button>
+  
+    <label class="theme-switch-wrapper">
+      <span class="theme-label">Light Mode</span>
+      <input type="checkbox" id="theme-toggle" aria-label="Toggle theme">
+      <span class="slider"></span>
+    </label>
   </nav>
 
   <main>
@@ -211,7 +213,7 @@
 
     <section id="projects" class="projects-section">
       <h2 class="projects-heading reveal-heading">
-        <span>Projects</span>
+        <span>Software</span>
       </h2>
       <div class="projects-grid">
         <!-- 2 × 2 -->
@@ -290,6 +292,7 @@
     <section id="art" class="art-section">
       <h2 class="art-heading reveal-heading">
         <span>Art</span>
+        <span>Gallery</span>
       </h2>
       <div class="gallery">
         <img src="images/art/rose.jpg" alt="" data-title="Rose"

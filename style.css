@@ -14,7 +14,7 @@ html {
    --bg-color: rgb(15, 15, 25);
    --nav-bg: rgb(15, 15, 25);
    --overlay-color: rgba(0, 0, 0, .6);
-   --card-bg: hsl(240, 25%, 30%);
+   --card-bg: hsl(240, 24%, 20%);
 
    /* Text */
    --text-color: #fafafa;
@@ -33,7 +33,7 @@ body.light {
    --bg-color: rgb(254, 254, 254);
    --nav-bg: rgb(254, 254, 254);
    --overlay-color: rgba(0, 0, 0, 0.30);
-   --card-bg: hsl(0, 0%, 98%);
+   --card-bg: hsl(0, 0%, 95%);
 
    /* Text */
    --text-color: #000000;
@@ -141,6 +141,8 @@ header {
    flex-direction: column;
    padding: 100px 50px 50px;
    overflow-y: auto;
+
+   font-family: 'Ovo', serif; 
 }
 
 .nav-menu.active {
@@ -179,26 +181,61 @@ header {
    gap: 18px;
 }
 
-.theme-toggle {
-   background: none;
-   border: none;
+.theme-switch-wrapper {
+   display: flex;
+   align-items: center;
+   gap: 12px;
    cursor: pointer;
-
    margin-top: 40px;
-   padding: 0;
-
+   align-self: flex-end;
    font-family: inherit;
    font-size: 1.2rem;
-   color: var(--secondary-text);
-   text-align: right;
-   align-self: flex-end;
-
-   transition: color .2s, transform .2s;
+   color: var(--text-color);
+   user-select: none;
 }
 
-.theme-toggle:hover {
-   opacity: var(--hover-opacity);
+.theme-switch-wrapper:hover {
    color: var(--text-color);
+}
+
+/* Hide the default browser checkbox */
+.theme-switch-wrapper input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
+
+/* The track for the switch */
+.slider {
+   position: relative;
+   display: inline-block;
+   width: 44px;
+   height: 24px;
+   background-color: var(--border-color, #ccc);
+   border-radius: 24px;
+   transition: background-color 0.3s;
+}
+
+/* The sliding circle knob */
+.slider::before {
+   position: absolute;
+   content: "";
+   height: 18px;
+   width: 18px;
+   left: 3px;
+   bottom: 3px;
+   background-color: white;
+   border-radius: 50%;
+   transition: transform 0.3s;
+}
+
+/* Checked state (Light Mode active) */
+input:checked+.slider {
+   background-color: var(--text-color, #333);
+}
+
+input:checked+.slider::before {
+   transform: translateX(20px);
 }
 
 /* ---------------- LANDING ---------------- */
@@ -211,11 +248,13 @@ header {
    padding: 0 60px;
    position: relative;
    overflow: hidden;
+   gap: 1rem;
+   margin-bottom: 7rem;
 }
 
 .hero {
    font-family: 'Ovo', serif;
-   max-width: 700px;
+   max-width: 25vw;
    z-index: 2;
    align-items: flex-end;
    padding-bottom: 4rem; 
@@ -565,8 +604,8 @@ header {
    position: absolute;
    inset: 0;
 
-   background: var(--overlay-color);
-   transition: background .35s ease;
+   background: transparent;
+   transition: background-color .35s ease;
 }
 
 /* ---------- Hover ---------- */
@@ -574,11 +613,10 @@ header {
 .project:hover {
    transform: translateY(-8px);
    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
-
 }
 
 .project:hover::before {
-   background: rgba(0, 0, 0, .25);
+   background: rgba(255, 255, 255, 0.08);
 }
 
 /* ---------- Content ---------- */

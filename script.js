@@ -15,39 +15,25 @@ overlay.addEventListener("click", toggleMenu);
 
 /* ---------------- THEME TOGGLE ---------------- */
 
-const themeToggle = document.querySelector(".theme-toggle");
-
-function applyLight() {
-    themeToggle.textContent = "Dark mode →";
-    themeToggle.setAttribute("aria-label", "Switch to dark theme");
-}
-
-function applyDark() {
-    themeToggle.textContent = "Light mode →";
-    themeToggle.setAttribute("aria-label", "Switch to light theme");
-}
+const themeToggle = document.getElementById("theme-toggle");
 
 // Restore saved preference
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "light") {
     document.body.classList.add("light");
-    applyLight();
-}
-else {
+    themeToggle.checked = true;
+} else {
     document.body.classList.remove("light");
-    applyDark();
+    themeToggle.checked = false;
 }
 
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light");
-
-    if (document.body.classList.contains("light")) {
-        applyLight();
+themeToggle.addEventListener("change", () => {
+    if (themeToggle.checked) {
+        document.body.classList.add("light");
         localStorage.setItem("theme", "light");
-    }
-    else {
-        applyDark();
+    } else {
+        document.body.classList.remove("light");
         localStorage.setItem("theme", "dark");
     }
 });
