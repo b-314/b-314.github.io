@@ -604,18 +604,41 @@ input:checked+.slider::before {
    position: relative;
    z-index: 2;
    width: 85%;
+   height: 85%;
    text-align: center;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
 }
 
 .project-content h3 {
    font-size: 2rem;
    font-weight: 300;
    margin-bottom: .8rem;
+   flex-shrink: 0;
 }
 
 .project-content p {
    font-size: 1rem;
    line-height: 1.7;
+}
+
+.project-content .project-description {
+   display: inline-block; 
+   text-align: left; 
+   font-size: 1rem;
+   line-height: 1.7;
+   margin: 0 auto;
+   padding-left: 1.2rem; 
+   min-height: 0;
+   overflow: hidden;
+}
+
+.project-content .project-description li {
+   margin-bottom: 0.5rem;
 }
 
 .github-link {
@@ -659,6 +682,14 @@ input:checked+.slider::before {
 
 body:not(.light) .tag {
    background-color: color-mix(in srgb, hsl(var(--tag-hue) 80% 55%) 65%, black 35%);
+}
+
+.project-tags.is-hidden {
+   display: none !important;
+}
+
+.project-content .project-description li.is-hidden {
+   display: none !important;
 }
 
 /* ---------------- ART ---------------- */

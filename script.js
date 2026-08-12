@@ -54,11 +54,74 @@ document.querySelectorAll(".reveal, .reveal-heading, .reveal-words, .gallery img
     observer.observe(el);
 });
 
+/* ---------------- HIDE BULLET POINTS ---------------- */
+function setupAllCardsOverflow() {
+    const cards = document.querySelectorAll('.project-content');
+    cards.forEach(container => {
+        const tagsContainer = container.querySelector('.project-tags');
+        const listItems = container.querySelectorAll('.project-description li');
+        const tags = tagsContainer ? Array.from(tagsContainer.querySelectorAll('.tag')) : [];
+
+        const checkOverflow = () => {
+            const containerBottom = container.getBoundingClientRect().bottom - 2;
+
+            if (tagsContainer) tagsContainer.classList.remove('is-hidden');
+            tags.forEach(tag => tag.classList.remove('is-hidden'));
+            listItems.forEach(li => li.classList.remove('is-hidden'));
+
+            let hasOverflow = () => {
+                if (tagsContainer && tagsContainer.getBoundingClientRect().bottom > containerBottom) return true;
+                for (let li of listItems) {
+                    if (!li.classList.contains('is-hidden') && li.getBoundingClientRect().bottom > containerBottom) return true;
+                }
+                return false;
+            };
+
+            while (hasOverflow()) {
+                let hiddenAny = false;
+
+                for (let i = listItems.length - 1; i >= 0; i--) {
+                    if (!listItems[i].classList.contains('is-hidden')) {
+                        listItems[i].classList.add('is-hidden');
+                        hiddenAny = true;
+                        break;
+                    }
+                }
+
+                if (!hiddenAny && tags.length > 0) {
+                    for (let i = tags.length - 1; i >= 0; i--) {
+                        if (!tags[i].classList.contains('is-hidden')) {
+                            tags[i].classList.add('is-hidden');
+                            const visibleTags = tags.filter(t => !t.classList.contains('is-hidden'));
+                            if (visibleTags.length > 0) {
+                                const firstTop = visibleTags[0].getBoundingClientRect().top;
+                                for (let t of visibleTags) {
+                                    if (t.getBoundingClientRect().top > firstTop + 5) {
+                                        t.classList.add('is-hidden');
+                                    }
+                                }
+                            }
+                            hiddenAny = true;
+                            break;
+                        }
+                    }
+                }
+                if (!hiddenAny) break;
+            }
+        };
+
+        const observer = new ResizeObserver(checkOverflow);
+        observer.observe(container);
+        checkOverflow();
+    });
+}
+
+window.addEventListener('load', setupAllCardsOverflow);
 /* ---------------- TAG COLORS ---------------- */
 
 document.querySelectorAll('.tag').forEach(tag => {
-  const randomHue = Math.floor(Math.random() * (330 - 200 + 1)) + 200;
-  tag.style.setProperty('--tag-hue', randomHue);
+    const randomHue = Math.floor(Math.random() * (330 - 200 + 1)) + 200;
+    tag.style.setProperty('--tag-hue', randomHue);
 });
 
 /* ---------------- ART MODAL ---------------- */
