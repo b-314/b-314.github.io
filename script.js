@@ -54,6 +54,13 @@ document.querySelectorAll(".reveal, .reveal-heading, .reveal-words, .gallery img
     observer.observe(el);
 });
 
+/* ---------------- TAG COLORS ---------------- */
+
+document.querySelectorAll('.tag').forEach(tag => {
+  const randomHue = Math.floor(Math.random() * (330 - 200 + 1)) + 200;
+  tag.style.setProperty('--tag-hue', randomHue);
+});
+
 /* ---------------- ART MODAL ---------------- */
 
 const modal = document.querySelector(".art-modal");

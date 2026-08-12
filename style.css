@@ -625,6 +625,7 @@ input:checked+.slider::before {
    z-index: 3;
    color: white;
    font-size: 1.5rem;
+   text-decoration: none;
    transition:
       opacity .3s,
       transform .3s;
@@ -635,8 +636,32 @@ input:checked+.slider::before {
    transform: scale(1.1);
 }
 
-/* ---------------- ART ---------------- */
+.project-tags {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.5rem;
+   justify-content: center;
+   margin-top: 1rem;
+}
 
+.tag {
+   --tag-hue: 280; 
+   background-color: hsl(var(--tag-hue) 80% 55%);
+   
+   color: #ffffff;                                  
+   padding: 0.3rem 0.8rem;                       
+   font-size: 0.85rem;                           
+   border-radius: 50px;                          
+   white-space: nowrap;                          
+   font-weight: 500;
+   transition: background-color 0.3s ease;
+}
+
+body:not(.light) .tag {
+   background-color: color-mix(in srgb, hsl(var(--tag-hue) 80% 55%) 65%, black 35%);
+}
+
+/* ---------------- ART ---------------- */
 .art-heading {
    margin-bottom: 3rem;
 }
