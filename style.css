@@ -50,16 +50,39 @@ body {
    overflow-x: hidden;
 }
 
-.landing-section, 
-.about-section,
-.experience-section,
-.projects-section, 
-.art-section {
-   padding: var(--section-spacing) 60px;
-   width: 100%; 
+/* ---------------- FONTS & LAYOUT ---------------- */
+h1,
+h2,
+h3,
+.company,
+.nav-menu,
+.hero,
+.about-text h2,
+.experience-text h2,
+.projects-heading,
+.art-heading,
+.art-info h3 {
+   font-family: 'Ovo', serif;
 }
 
-/* ---------------- HEADER ---------------- */
+.about-text h2,
+.experience-text h2,
+.projects-heading,
+.art-heading {
+   font-size: 3.2rem;
+   font-weight: 300;
+}
+
+.landing-section,
+.about-section,
+.experience-section,
+.projects-section,
+.art-section {
+   padding: var(--section-spacing) 60px;
+   width: 100%;
+}
+
+/* ---------------- NAVIGATION ---------------- */
 header {
    position: fixed;
    top: 40px;
@@ -104,8 +127,6 @@ header {
    transform: translateY(-13px) rotate(-45deg);
 }
 
-/* ---------------- OVERLAY ---------------- */
-
 .overlay {
    position: fixed;
    inset: 0;
@@ -122,8 +143,6 @@ header {
    opacity: 1;
    visibility: visible;
 }
-
-/* ---------------- NAVIGATION ---------------- */
 
 .nav-menu {
    position: fixed;
@@ -143,7 +162,7 @@ header {
    padding: 100px 50px 50px;
    overflow-y: auto;
 
-   font-family: 'Ovo', serif; 
+   font-family: 'Ovo', serif;
 }
 
 .nav-menu.active {
@@ -162,21 +181,19 @@ header {
 .nav-menu a {
    text-decoration: none;
    color: var(--text-color);
-
    text-align: right;
    font-size: 1.4rem;
-
    transition: .2s;
 }
 
-.nav-menu a:hover {
+.nav-menu a:hover,
+.social-links a:hover {
    opacity: var(--hover-opacity);
 }
 
 .social-links {
    margin-top: 40px;
    margin-bottom: auto;
-
    display: flex;
    flex-direction: column;
    gap: 18px;
@@ -243,7 +260,6 @@ input:checked+.slider::before {
 
 .landing-section {
    padding: 0;
-   width: 100%;
 }
 
 .landing {
@@ -260,11 +276,10 @@ input:checked+.slider::before {
 }
 
 .hero {
-   font-family: 'Ovo', serif;
    max-width: 600px;
    z-index: 2;
    align-items: flex-end;
-   padding-bottom: 4rem; 
+   padding-bottom: 4rem;
 }
 
 .hero h1 {
@@ -281,11 +296,9 @@ input:checked+.slider::before {
 
 .current {
    margin-top: 50px;
-
    display: flex;
    flex-direction: column;
    gap: 6px;
-
    font-size: 1.2rem;
 }
 
@@ -298,20 +311,18 @@ input:checked+.slider::before {
    position: absolute;
    top: 0;
    right: 0;
-   left: 20vw; 
+   left: 20vw;
    height: 100vh;
-   pointer-events: auto; /* Allows cursor tracking */
+   pointer-events: auto;
    perspective: 1000px;
    overflow: hidden;
 }
 
 /* ---------------- ABOUT ---------------- */
-
 .about-content {
    display: grid;
    grid-template-columns: 1.2fr 1fr;
    gap: 7rem;
-
    align-items: start;
 }
 
@@ -341,7 +352,6 @@ input:checked+.slider::before {
 }
 
 /* ---------- PHOTOS ---------- */
-
 .photo-grid {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
@@ -397,8 +407,7 @@ input:checked+.slider::before {
    inset: auto 0 0 0;
    padding: 1rem;
 
-   background: linear-gradient(transparent,
-         rgba(0, 0, 0, .65));
+   background: linear-gradient(transparent, rgba(0, 0, 0, .65));
    color: white;
    font-size: .95rem;
 
@@ -411,7 +420,6 @@ input:checked+.slider::before {
 }
 
 /* ---------------- EXPERIENCE ---------------- */
-
 .experience-section {
    display: grid;
    grid-template-columns: 1fr 1.5fr;
@@ -424,9 +432,6 @@ input:checked+.slider::before {
 }
 
 .experience-text h2 {
-   font-family: "Ovo", serif;
-   font-size: 3.2rem;
-   font-weight: 300;
    margin-bottom: 2rem;
 }
 
@@ -452,7 +457,6 @@ input:checked+.slider::before {
 }
 
 .company {
-   font-family: "Ovo", serif;
    font-size: 1.6rem;
    font-weight: 600;
 }
@@ -480,7 +484,6 @@ input:checked+.slider::before {
 }
 
 /* ---------- ANIMATIONS ---------- */
-
 .reveal {
    opacity: 0;
    transform: translateY(40px);
@@ -499,20 +502,9 @@ input:checked+.slider::before {
 .reveal-heading span,
 .reveal-words span {
    display: inline-block;
-
    opacity: 0;
-
-   transition:
-      opacity .5s ease,
-      transform .5s ease;
-}
-
-.reveal-heading span {
    transform: translateY(25px);
-}
-
-.reveal-words span {
-   transform: translateY(25px);
+   transition: opacity .5s ease, transform .5s ease;
 }
 
 .reveal-heading.visible span:nth-child(1) {
@@ -548,35 +540,23 @@ input:checked+.slider::before {
 }
 
 /* ---------------- PROJECTS ---------------- */
-
 .projects-heading {
-   font-family: "Ovo", serif;
-   font-size: 3.2rem;
-   font-weight: 300;
-
    margin-bottom: 4rem;
 }
-
-/* ---------- Grid ---------- */
 
 .projects-grid {
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-auto-rows: 220px;
-
    gap: 1.5rem;
 }
-
-/* ---------- Sizes ---------- */
 
 .project {
    position: relative;
    overflow: hidden;
-
    border-radius: 10px;
 
    background: var(--card-bg);
-
    background-size: cover;
    background-position: center;
 
@@ -603,19 +583,13 @@ input:checked+.slider::before {
    grid-row: span 2;
 }
 
-/* ---------- Overlay ---------- */
-
 .project::before {
    content: "";
-
    position: absolute;
    inset: 0;
-
    background: transparent;
    transition: background-color .35s ease;
 }
-
-/* ---------- Hover ---------- */
 
 .project:hover {
    transform: translateY(-8px);
@@ -626,48 +600,34 @@ input:checked+.slider::before {
    background: rgba(255, 255, 255, 0.08);
 }
 
-/* ---------- Content ---------- */
-
 .project-content {
    position: relative;
-
    z-index: 2;
    width: 85%;
-
    text-align: center;
 }
 
 .project-content h3 {
-   font-family: "Ovo", serif;
    font-size: 2rem;
    font-weight: 300;
-
    margin-bottom: .8rem;
 }
 
 .project-content p {
-   font-family: "Mulish", sans-serif;
    font-size: 1rem;
-
    line-height: 1.7;
 }
 
-/* ---------- Github ---------- */
-
 .github-link {
    position: absolute;
-
    top: 18px;
    right: 18px;
    z-index: 3;
-
    color: white;
    font-size: 1.5rem;
-
    transition:
       opacity .3s,
       transform .3s;
-
 }
 
 .github-link:hover {
@@ -678,14 +638,8 @@ input:checked+.slider::before {
 /* ---------------- ART ---------------- */
 
 .art-heading {
-   font-family: "Ovo", serif;
-   font-size: 3.2rem;
-   font-weight: 300;
-
    margin-bottom: 3rem;
 }
-
-/* ---------- Gallery ---------- */
 
 .gallery {
    column-count: 4;
@@ -701,9 +655,17 @@ input:checked+.slider::before {
    border-radius: 8px;
 
    cursor: pointer;
+   opacity: 0;
+   transform: translateY(40px);
    transition:
-      transform .35s,
-      opacity .35s;
+      opacity 0.8s ease,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.35s ease;
+}
+
+.gallery img.visible {
+   opacity: 1;
+   transform: translateY(0);
 }
 
 .gallery img:hover {
@@ -758,14 +720,12 @@ input:checked+.slider::before {
    display: flex;
    justify-content: center;
    align-items: center;
-
-   background: #111;
+   background: (--card-bg);
 }
 
 .art-image img {
    max-width: 100%;
    max-height: 85vh;
-
    display: block;
 }
 
@@ -777,17 +737,13 @@ input:checked+.slider::before {
 }
 
 .art-info h3 {
-   font-family: "Ovo", serif;
    font-size: 2rem;
    font-weight: 300;
-
    margin-bottom: 1.5rem;
 }
 
 .art-info p {
-   font-family: "Mulish", sans-serif;
    line-height: 1.8;
-
    margin-bottom: 2rem;
 }
 
@@ -823,25 +779,20 @@ input:checked+.slider::before {
       padding: 100px 30px 40px;
    }
 
-   .about-section {
+   .about-section,
+   .experience-section,
+   .projects-section {
       padding: 7rem 30px;
    }
 
    .about-content {
       display: flex;
       flex-direction: column-reverse;
-
       gap: 4rem;
    }
 
    .about-text {
-      position: sticky;
-      top: 15vh;
-      align-self: start;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      position: static;
       min-height: 20vh;
       margin-bottom: 1vh;
    }
@@ -859,8 +810,6 @@ input:checked+.slider::before {
       display: flex;
       flex-direction: column;
       gap: 4rem;
-
-      padding: 7rem 30px;
    }
 
    .about-text,
