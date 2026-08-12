@@ -19,7 +19,7 @@ class Butterfly {
     this.vy = Math.sin(angle) * this.speed;
 
     this.wanderAngle = Math.random() * Math.PI * 2;
-    this.scale = 0.75 + Math.random() * 0.75;
+    this.scale = 0.6 + Math.random() * 0.75;
 
     this.containerBox.appendChild(this.domElement);
   }
