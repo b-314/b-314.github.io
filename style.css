@@ -797,7 +797,7 @@ body:not(.light) .tag {
    display: flex;
    justify-content: center;
    align-items: center;
-   background: (--card-bg);
+   background: var(--card-bg);
 }
 
 .art-image img {
